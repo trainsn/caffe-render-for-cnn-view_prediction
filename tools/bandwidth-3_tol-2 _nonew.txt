@@ -1,0 +1,723 @@
+I0809 09:55:17.051884 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.00390625
+I0809 09:55:17.051941 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 48.7959 (* 1 = 48.7959 loss)
+I0809 09:55:17.592799 30734 solver.cpp:209] Iteration 0, loss = 49.1639
+I0809 09:55:17.592857 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0
+I0809 09:55:17.592877 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 49.1639 (* 1 = 49.1639 loss)
+I0809 09:55:17.592897 30734 solver.cpp:445] Iteration 0, lr = 0.001
+I0809 09:55:48.696713 30734 solver.cpp:209] Iteration 50, loss = 48.4376
+I0809 09:55:48.696832 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0
+I0809 09:55:48.696853 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 48.4376 (* 1 = 48.4376 loss)
+I0809 09:55:48.696861 30734 solver.cpp:445] Iteration 50, lr = 0.001
+I0809 09:56:19.379703 30734 solver.cpp:209] Iteration 100, loss = 47.8126
+I0809 09:56:19.379856 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.015625
+I0809 09:56:19.379878 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 47.8126 (* 1 = 47.8126 loss)
+I0809 09:56:19.379885 30734 solver.cpp:445] Iteration 100, lr = 0.001
+I0809 09:56:50.284996 30734 solver.cpp:209] Iteration 150, loss = 43.6637
+I0809 09:56:50.285145 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.046875
+I0809 09:56:50.285164 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 43.6637 (* 1 = 43.6637 loss)
+I0809 09:56:50.285171 30734 solver.cpp:445] Iteration 150, lr = 0.001
+I0809 09:57:19.922014 30734 solver.cpp:264] Iteration 200, Testing net (#0)
+I0809 09:57:19.922066 30734 net.cpp:652] Copying source layer data
+I0809 09:57:19.922071 30734 net.cpp:652] Copying source layer label
+I0809 09:57:19.922075 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 09:57:19.922077 30734 net.cpp:652] Copying source layer conv1
+I0809 09:57:19.922082 30734 net.cpp:652] Copying source layer relu1
+I0809 09:57:19.922086 30734 net.cpp:652] Copying source layer pool1
+I0809 09:57:19.922088 30734 net.cpp:652] Copying source layer norm1
+I0809 09:57:19.922091 30734 net.cpp:652] Copying source layer conv2
+I0809 09:57:19.922094 30734 net.cpp:652] Copying source layer relu2
+I0809 09:57:19.922097 30734 net.cpp:652] Copying source layer pool2
+I0809 09:57:19.922101 30734 net.cpp:652] Copying source layer norm2
+I0809 09:57:19.922104 30734 net.cpp:652] Copying source layer conv3
+I0809 09:57:19.922107 30734 net.cpp:652] Copying source layer relu3
+I0809 09:57:19.922111 30734 net.cpp:652] Copying source layer conv4
+I0809 09:57:19.922116 30734 net.cpp:652] Copying source layer relu4
+I0809 09:57:19.922118 30734 net.cpp:652] Copying source layer conv5
+I0809 09:57:19.922122 30734 net.cpp:652] Copying source layer relu5
+I0809 09:57:19.922125 30734 net.cpp:652] Copying source layer pool5
+I0809 09:57:19.922128 30734 net.cpp:652] Copying source layer fc6-new
+I0809 09:57:19.922132 30734 net.cpp:652] Copying source layer relu6
+I0809 09:57:19.922135 30734 net.cpp:652] Copying source layer drop6
+I0809 09:57:19.922138 30734 net.cpp:652] Copying source layer fc7-new
+I0809 09:57:19.922142 30734 net.cpp:652] Copying source layer relu7
+I0809 09:57:19.922145 30734 net.cpp:652] Copying source layer drop7
+I0809 09:57:19.922148 30734 net.cpp:652] Copying source layer fc8-new
+I0809 09:57:19.922152 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 09:57:19.922155 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 09:57:19.922158 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 09:57:26.034577 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.463449
+I0809 09:57:26.034811 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 30.2602 (* 1 = 30.2602 loss)
+I0809 09:57:26.558202 30734 solver.cpp:209] Iteration 200, loss = 37.703
+I0809 09:57:26.558257 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.135417
+I0809 09:57:26.558276 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 37.703 (* 1 = 37.703 loss)
+I0809 09:57:26.558285 30734 solver.cpp:445] Iteration 200, lr = 0.001
+I0809 09:57:57.348814 30734 solver.cpp:209] Iteration 250, loss = 28.7674
+I0809 09:57:57.348958 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.393229
+I0809 09:57:57.348979 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 28.7674 (* 1 = 28.7674 loss)
+I0809 09:57:57.348987 30734 solver.cpp:445] Iteration 250, lr = 0.001
+I0809 09:58:28.185026 30734 solver.cpp:209] Iteration 300, loss = 25.5601
+I0809 09:58:28.185178 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.471354
+I0809 09:58:28.185201 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 25.5601 (* 1 = 25.5601 loss)
+I0809 09:58:28.185216 30734 solver.cpp:445] Iteration 300, lr = 0.001
+I0809 09:58:58.780062 30734 solver.cpp:209] Iteration 350, loss = 26.8623
+I0809 09:58:58.780202 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.466146
+I0809 09:58:58.780242 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 26.8623 (* 1 = 26.8623 loss)
+I0809 09:58:58.780258 30734 solver.cpp:445] Iteration 350, lr = 0.001
+I0809 09:59:29.194931 30734 solver.cpp:264] Iteration 400, Testing net (#0)
+I0809 09:59:29.195062 30734 net.cpp:652] Copying source layer data
+I0809 09:59:29.195068 30734 net.cpp:652] Copying source layer label
+I0809 09:59:29.195072 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 09:59:29.195075 30734 net.cpp:652] Copying source layer conv1
+I0809 09:59:29.195080 30734 net.cpp:652] Copying source layer relu1
+I0809 09:59:29.195085 30734 net.cpp:652] Copying source layer pool1
+I0809 09:59:29.195087 30734 net.cpp:652] Copying source layer norm1
+I0809 09:59:29.195091 30734 net.cpp:652] Copying source layer conv2
+I0809 09:59:29.195096 30734 net.cpp:652] Copying source layer relu2
+I0809 09:59:29.195098 30734 net.cpp:652] Copying source layer pool2
+I0809 09:59:29.195102 30734 net.cpp:652] Copying source layer norm2
+I0809 09:59:29.195106 30734 net.cpp:652] Copying source layer conv3
+I0809 09:59:29.195109 30734 net.cpp:652] Copying source layer relu3
+I0809 09:59:29.195113 30734 net.cpp:652] Copying source layer conv4
+I0809 09:59:29.195117 30734 net.cpp:652] Copying source layer relu4
+I0809 09:59:29.195122 30734 net.cpp:652] Copying source layer conv5
+I0809 09:59:29.195125 30734 net.cpp:652] Copying source layer relu5
+I0809 09:59:29.195129 30734 net.cpp:652] Copying source layer pool5
+I0809 09:59:29.195132 30734 net.cpp:652] Copying source layer fc6-new
+I0809 09:59:29.195137 30734 net.cpp:652] Copying source layer relu6
+I0809 09:59:29.195139 30734 net.cpp:652] Copying source layer drop6
+I0809 09:59:29.195143 30734 net.cpp:652] Copying source layer fc7-new
+I0809 09:59:29.195147 30734 net.cpp:652] Copying source layer relu7
+I0809 09:59:29.195152 30734 net.cpp:652] Copying source layer drop7
+I0809 09:59:29.195154 30734 net.cpp:652] Copying source layer fc8-new
+I0809 09:59:29.195158 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 09:59:29.195163 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 09:59:29.195165 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 09:59:34.973798 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.778181
+I0809 09:59:34.973866 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 20.5034 (* 1 = 20.5034 loss)
+I0809 09:59:35.485548 30734 solver.cpp:209] Iteration 400, loss = 23.2722
+I0809 09:59:35.485606 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.601562
+I0809 09:59:35.485617 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 23.2722 (* 1 = 23.2722 loss)
+I0809 09:59:35.485632 30734 solver.cpp:445] Iteration 400, lr = 0.00033
+I0809 10:00:06.454929 30734 solver.cpp:209] Iteration 450, loss = 22.6656
+I0809 10:00:06.455199 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.591146
+I0809 10:00:06.455219 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.6656 (* 1 = 22.6656 loss)
+I0809 10:00:06.455226 30734 solver.cpp:445] Iteration 450, lr = 0.00033
+I0809 10:00:37.347368 30734 solver.cpp:209] Iteration 500, loss = 22.5911
+I0809 10:00:37.347522 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.604167
+I0809 10:00:37.347546 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.5911 (* 1 = 22.5911 loss)
+I0809 10:00:37.347554 30734 solver.cpp:445] Iteration 500, lr = 0.00033
+I0809 10:01:08.204094 30734 solver.cpp:209] Iteration 550, loss = 22.4649
+I0809 10:01:08.204228 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.640625
+I0809 10:01:08.204248 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.4649 (* 1 = 22.4649 loss)
+I0809 10:01:08.204255 30734 solver.cpp:445] Iteration 550, lr = 0.00033
+I0809 10:01:38.793040 30734 solver.cpp:264] Iteration 600, Testing net (#0)
+I0809 10:01:38.793179 30734 net.cpp:652] Copying source layer data
+I0809 10:01:38.793184 30734 net.cpp:652] Copying source layer label
+I0809 10:01:38.793187 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:01:38.793190 30734 net.cpp:652] Copying source layer conv1
+I0809 10:01:38.793195 30734 net.cpp:652] Copying source layer relu1
+I0809 10:01:38.793197 30734 net.cpp:652] Copying source layer pool1
+I0809 10:01:38.793200 30734 net.cpp:652] Copying source layer norm1
+I0809 10:01:38.793203 30734 net.cpp:652] Copying source layer conv2
+I0809 10:01:38.793207 30734 net.cpp:652] Copying source layer relu2
+I0809 10:01:38.793210 30734 net.cpp:652] Copying source layer pool2
+I0809 10:01:38.793213 30734 net.cpp:652] Copying source layer norm2
+I0809 10:01:38.793216 30734 net.cpp:652] Copying source layer conv3
+I0809 10:01:38.793220 30734 net.cpp:652] Copying source layer relu3
+I0809 10:01:38.793223 30734 net.cpp:652] Copying source layer conv4
+I0809 10:01:38.793227 30734 net.cpp:652] Copying source layer relu4
+I0809 10:01:38.793231 30734 net.cpp:652] Copying source layer conv5
+I0809 10:01:38.793233 30734 net.cpp:652] Copying source layer relu5
+I0809 10:01:38.793237 30734 net.cpp:652] Copying source layer pool5
+I0809 10:01:38.793241 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:01:38.793244 30734 net.cpp:652] Copying source layer relu6
+I0809 10:01:38.793247 30734 net.cpp:652] Copying source layer drop6
+I0809 10:01:38.793251 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:01:38.793254 30734 net.cpp:652] Copying source layer relu7
+I0809 10:01:38.793257 30734 net.cpp:652] Copying source layer drop7
+I0809 10:01:38.793262 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:01:38.793264 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:01:38.793268 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:01:38.793272 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:01:44.450211 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.857701
+I0809 10:01:44.450261 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.7913 (* 1 = 19.7913 loss)
+I0809 10:01:44.955962 30734 solver.cpp:209] Iteration 600, loss = 22.1465
+I0809 10:01:44.956018 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.651042
+I0809 10:01:44.956028 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.1465 (* 1 = 22.1465 loss)
+I0809 10:01:44.956035 30734 solver.cpp:445] Iteration 600, lr = 0.00033
+I0809 10:02:16.511706 30734 solver.cpp:209] Iteration 650, loss = 22.0372
+I0809 10:02:16.511929 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.630208
+I0809 10:02:16.511956 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.0372 (* 1 = 22.0372 loss)
+I0809 10:02:16.511963 30734 solver.cpp:445] Iteration 650, lr = 0.00033
+I0809 10:02:46.935518 30734 solver.cpp:209] Iteration 700, loss = 21.636
+I0809 10:02:46.935657 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.695312
+I0809 10:02:46.935669 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.636 (* 1 = 21.636 loss)
+I0809 10:02:46.935676 30734 solver.cpp:445] Iteration 700, lr = 0.00033
+I0809 10:03:18.361018 30734 solver.cpp:209] Iteration 750, loss = 22.0102
+I0809 10:03:18.361158 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.651042
+I0809 10:03:18.361186 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.0102 (* 1 = 22.0102 loss)
+I0809 10:03:18.361194 30734 solver.cpp:445] Iteration 750, lr = 0.00033
+I0809 10:03:48.782045 30734 solver.cpp:264] Iteration 800, Testing net (#0)
+I0809 10:03:48.782176 30734 net.cpp:652] Copying source layer data
+I0809 10:03:48.782181 30734 net.cpp:652] Copying source layer label
+I0809 10:03:48.782186 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:03:48.782188 30734 net.cpp:652] Copying source layer conv1
+I0809 10:03:48.782192 30734 net.cpp:652] Copying source layer relu1
+I0809 10:03:48.782196 30734 net.cpp:652] Copying source layer pool1
+I0809 10:03:48.782198 30734 net.cpp:652] Copying source layer norm1
+I0809 10:03:48.782202 30734 net.cpp:652] Copying source layer conv2
+I0809 10:03:48.782204 30734 net.cpp:652] Copying source layer relu2
+I0809 10:03:48.782207 30734 net.cpp:652] Copying source layer pool2
+I0809 10:03:48.782210 30734 net.cpp:652] Copying source layer norm2
+I0809 10:03:48.782213 30734 net.cpp:652] Copying source layer conv3
+I0809 10:03:48.782217 30734 net.cpp:652] Copying source layer relu3
+I0809 10:03:48.782220 30734 net.cpp:652] Copying source layer conv4
+I0809 10:03:48.782224 30734 net.cpp:652] Copying source layer relu4
+I0809 10:03:48.782227 30734 net.cpp:652] Copying source layer conv5
+I0809 10:03:48.782232 30734 net.cpp:652] Copying source layer relu5
+I0809 10:03:48.782234 30734 net.cpp:652] Copying source layer pool5
+I0809 10:03:48.782238 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:03:48.782241 30734 net.cpp:652] Copying source layer relu6
+I0809 10:03:48.782244 30734 net.cpp:652] Copying source layer drop6
+I0809 10:03:48.782248 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:03:48.782253 30734 net.cpp:652] Copying source layer relu7
+I0809 10:03:48.782255 30734 net.cpp:652] Copying source layer drop7
+I0809 10:03:48.782258 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:03:48.782263 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:03:48.782265 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:03:48.782269 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:03:54.225697 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.885324
+I0809 10:03:54.225759 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.8097 (* 1 = 19.8097 loss)
+I0809 10:03:54.744472 30734 solver.cpp:209] Iteration 800, loss = 22.1543
+I0809 10:03:54.744524 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.627604
+I0809 10:03:54.744544 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.1543 (* 1 = 22.1543 loss)
+I0809 10:03:54.744550 30734 solver.cpp:445] Iteration 800, lr = 0.0001089
+I0809 10:04:25.817844 30734 solver.cpp:209] Iteration 850, loss = 21.28
+I0809 10:04:25.818079 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.682292
+I0809 10:04:25.818100 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.28 (* 1 = 21.28 loss)
+I0809 10:04:25.818107 30734 solver.cpp:445] Iteration 850, lr = 0.0001089
+I0809 10:04:57.229328 30734 solver.cpp:209] Iteration 900, loss = 22.6994
+I0809 10:04:57.229451 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.604167
+I0809 10:04:57.229472 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.6994 (* 1 = 22.6994 loss)
+I0809 10:04:57.229480 30734 solver.cpp:445] Iteration 900, lr = 0.0001089
+I0809 10:05:28.257659 30734 solver.cpp:209] Iteration 950, loss = 21.4189
+I0809 10:05:28.257802 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.716146
+I0809 10:05:28.257822 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.4189 (* 1 = 21.4189 loss)
+I0809 10:05:28.257830 30734 solver.cpp:445] Iteration 950, lr = 0.0001089
+I0809 10:05:57.856088 30734 net.cpp:735] Serializing 28 layers
+I0809 10:05:58.993157 30734 solver.cpp:334] Snapshotting to snapshots_iter_1000.caffemodel
+I0809 10:06:03.038894 30734 solver.cpp:342] Snapshotting solver state to snapshots_iter_1000.solverstate
+I0809 10:06:05.375627 30734 solver.cpp:264] Iteration 1000, Testing net (#0)
+I0809 10:06:05.375697 30734 net.cpp:652] Copying source layer data
+I0809 10:06:05.375715 30734 net.cpp:652] Copying source layer label
+I0809 10:06:05.375721 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:06:05.375727 30734 net.cpp:652] Copying source layer conv1
+I0809 10:06:05.375747 30734 net.cpp:652] Copying source layer relu1
+I0809 10:06:05.375753 30734 net.cpp:652] Copying source layer pool1
+I0809 10:06:05.375759 30734 net.cpp:652] Copying source layer norm1
+I0809 10:06:05.375766 30734 net.cpp:652] Copying source layer conv2
+I0809 10:06:05.375772 30734 net.cpp:652] Copying source layer relu2
+I0809 10:06:05.375778 30734 net.cpp:652] Copying source layer pool2
+I0809 10:06:05.375783 30734 net.cpp:652] Copying source layer norm2
+I0809 10:06:05.375789 30734 net.cpp:652] Copying source layer conv3
+I0809 10:06:05.375797 30734 net.cpp:652] Copying source layer relu3
+I0809 10:06:05.375803 30734 net.cpp:652] Copying source layer conv4
+I0809 10:06:05.375810 30734 net.cpp:652] Copying source layer relu4
+I0809 10:06:05.375816 30734 net.cpp:652] Copying source layer conv5
+I0809 10:06:05.375824 30734 net.cpp:652] Copying source layer relu5
+I0809 10:06:05.375830 30734 net.cpp:652] Copying source layer pool5
+I0809 10:06:05.375836 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:06:05.375844 30734 net.cpp:652] Copying source layer relu6
+I0809 10:06:05.375849 30734 net.cpp:652] Copying source layer drop6
+I0809 10:06:05.375856 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:06:05.375864 30734 net.cpp:652] Copying source layer relu7
+I0809 10:06:05.375877 30734 net.cpp:652] Copying source layer drop7
+I0809 10:06:05.375883 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:06:05.375900 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:06:05.375905 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:06:05.375911 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:06:11.190834 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.904576
+I0809 10:06:11.190899 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.5285 (* 1 = 19.5285 loss)
+I0809 10:06:11.699790 30734 solver.cpp:209] Iteration 1000, loss = 21.3484
+I0809 10:06:11.699842 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.679688
+I0809 10:06:11.699859 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.3484 (* 1 = 21.3484 loss)
+I0809 10:06:11.699868 30734 solver.cpp:445] Iteration 1000, lr = 0.0001089
+I0809 10:06:43.086230 30734 solver.cpp:209] Iteration 1050, loss = 21.1414
+I0809 10:06:43.086493 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.658854
+I0809 10:06:43.086521 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.1414 (* 1 = 21.1414 loss)
+I0809 10:06:43.086529 30734 solver.cpp:445] Iteration 1050, lr = 0.0001089
+I0809 10:07:13.269958 30734 solver.cpp:209] Iteration 1100, loss = 21.2951
+I0809 10:07:13.270095 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.697917
+I0809 10:07:13.270119 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.2951 (* 1 = 21.2951 loss)
+I0809 10:07:13.270128 30734 solver.cpp:445] Iteration 1100, lr = 0.0001089
+I0809 10:07:44.733484 30734 solver.cpp:209] Iteration 1150, loss = 21.0245
+I0809 10:07:44.733621 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.697917
+I0809 10:07:44.733641 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0245 (* 1 = 21.0245 loss)
+I0809 10:07:44.733649 30734 solver.cpp:445] Iteration 1150, lr = 0.0001089
+I0809 10:08:15.527755 30734 solver.cpp:264] Iteration 1200, Testing net (#0)
+I0809 10:08:15.527882 30734 net.cpp:652] Copying source layer data
+I0809 10:08:15.527889 30734 net.cpp:652] Copying source layer label
+I0809 10:08:15.527892 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:08:15.527895 30734 net.cpp:652] Copying source layer conv1
+I0809 10:08:15.527900 30734 net.cpp:652] Copying source layer relu1
+I0809 10:08:15.527904 30734 net.cpp:652] Copying source layer pool1
+I0809 10:08:15.527906 30734 net.cpp:652] Copying source layer norm1
+I0809 10:08:15.527910 30734 net.cpp:652] Copying source layer conv2
+I0809 10:08:15.527914 30734 net.cpp:652] Copying source layer relu2
+I0809 10:08:15.527917 30734 net.cpp:652] Copying source layer pool2
+I0809 10:08:15.527920 30734 net.cpp:652] Copying source layer norm2
+I0809 10:08:15.527925 30734 net.cpp:652] Copying source layer conv3
+I0809 10:08:15.527928 30734 net.cpp:652] Copying source layer relu3
+I0809 10:08:15.527932 30734 net.cpp:652] Copying source layer conv4
+I0809 10:08:15.527936 30734 net.cpp:652] Copying source layer relu4
+I0809 10:08:15.527940 30734 net.cpp:652] Copying source layer conv5
+I0809 10:08:15.527943 30734 net.cpp:652] Copying source layer relu5
+I0809 10:08:15.527947 30734 net.cpp:652] Copying source layer pool5
+I0809 10:08:15.527951 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:08:15.527967 30734 net.cpp:652] Copying source layer relu6
+I0809 10:08:15.527971 30734 net.cpp:652] Copying source layer drop6
+I0809 10:08:15.527973 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:08:15.527978 30734 net.cpp:652] Copying source layer relu7
+I0809 10:08:15.527981 30734 net.cpp:652] Copying source layer drop7
+I0809 10:08:15.527986 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:08:15.527989 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:08:15.527993 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:08:15.527997 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:08:21.654374 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.911272
+I0809 10:08:21.654443 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3926 (* 1 = 19.3926 loss)
+I0809 10:08:22.170466 30734 solver.cpp:209] Iteration 1200, loss = 21.0512
+I0809 10:08:22.170526 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.703125
+I0809 10:08:22.170544 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0512 (* 1 = 21.0512 loss)
+I0809 10:08:22.170562 30734 solver.cpp:445] Iteration 1200, lr = 3.5937e-05
+I0809 10:08:52.333788 30734 solver.cpp:209] Iteration 1250, loss = 21.0702
+I0809 10:08:52.334035 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.664062
+I0809 10:08:52.334056 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0702 (* 1 = 21.0702 loss)
+I0809 10:08:52.334064 30734 solver.cpp:445] Iteration 1250, lr = 3.5937e-05
+I0809 10:09:23.741693 30734 solver.cpp:209] Iteration 1300, loss = 20.9814
+I0809 10:09:23.741843 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.697917
+I0809 10:09:23.741871 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9814 (* 1 = 20.9814 loss)
+I0809 10:09:23.741886 30734 solver.cpp:445] Iteration 1300, lr = 3.5937e-05
+I0809 10:09:55.023453 30734 solver.cpp:209] Iteration 1350, loss = 21.8355
+I0809 10:09:55.023613 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.648438
+I0809 10:09:55.023643 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.8355 (* 1 = 21.8355 loss)
+I0809 10:09:55.023653 30734 solver.cpp:445] Iteration 1350, lr = 3.5937e-05
+I0809 10:10:24.836879 30734 solver.cpp:264] Iteration 1400, Testing net (#0)
+I0809 10:10:24.836933 30734 net.cpp:652] Copying source layer data
+I0809 10:10:24.836938 30734 net.cpp:652] Copying source layer label
+I0809 10:10:24.836941 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:10:24.836944 30734 net.cpp:652] Copying source layer conv1
+I0809 10:10:24.836949 30734 net.cpp:652] Copying source layer relu1
+I0809 10:10:24.836952 30734 net.cpp:652] Copying source layer pool1
+I0809 10:10:24.836956 30734 net.cpp:652] Copying source layer norm1
+I0809 10:10:24.836958 30734 net.cpp:652] Copying source layer conv2
+I0809 10:10:24.836962 30734 net.cpp:652] Copying source layer relu2
+I0809 10:10:24.836966 30734 net.cpp:652] Copying source layer pool2
+I0809 10:10:24.836969 30734 net.cpp:652] Copying source layer norm2
+I0809 10:10:24.836972 30734 net.cpp:652] Copying source layer conv3
+I0809 10:10:24.836977 30734 net.cpp:652] Copying source layer relu3
+I0809 10:10:24.836979 30734 net.cpp:652] Copying source layer conv4
+I0809 10:10:24.836983 30734 net.cpp:652] Copying source layer relu4
+I0809 10:10:24.836987 30734 net.cpp:652] Copying source layer conv5
+I0809 10:10:24.836992 30734 net.cpp:652] Copying source layer relu5
+I0809 10:10:24.836994 30734 net.cpp:652] Copying source layer pool5
+I0809 10:10:24.836997 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:10:24.837002 30734 net.cpp:652] Copying source layer relu6
+I0809 10:10:24.837005 30734 net.cpp:652] Copying source layer drop6
+I0809 10:10:24.837008 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:10:24.837013 30734 net.cpp:652] Copying source layer relu7
+I0809 10:10:24.837016 30734 net.cpp:652] Copying source layer drop7
+I0809 10:10:24.837019 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:10:24.837023 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:10:24.837026 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:10:24.837030 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:10:30.245648 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.912946
+I0809 10:10:30.246177 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.4006 (* 1 = 19.4006 loss)
+I0809 10:10:30.757052 30734 solver.cpp:209] Iteration 1400, loss = 20.9848
+I0809 10:10:30.757107 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.723958
+I0809 10:10:30.757125 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9848 (* 1 = 20.9848 loss)
+I0809 10:10:30.757141 30734 solver.cpp:445] Iteration 1400, lr = 3.5937e-05
+I0809 10:11:01.442891 30734 solver.cpp:209] Iteration 1450, loss = 22.4096
+I0809 10:11:01.443020 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.611979
+I0809 10:11:01.443044 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.4096 (* 1 = 22.4096 loss)
+I0809 10:11:01.443068 30734 solver.cpp:445] Iteration 1450, lr = 3.5937e-05
+I0809 10:11:32.230819 30734 solver.cpp:209] Iteration 1500, loss = 21.948
+I0809 10:11:32.231066 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.632812
+I0809 10:11:32.231087 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.948 (* 1 = 21.948 loss)
+I0809 10:11:32.231102 30734 solver.cpp:445] Iteration 1500, lr = 3.5937e-05
+I0809 10:12:02.645202 30734 solver.cpp:209] Iteration 1550, loss = 21.2615
+I0809 10:12:02.645347 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.729167
+I0809 10:12:02.645367 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.2615 (* 1 = 21.2615 loss)
+I0809 10:12:02.645375 30734 solver.cpp:445] Iteration 1550, lr = 3.5937e-05
+I0809 10:12:32.939590 30734 solver.cpp:264] Iteration 1600, Testing net (#0)
+I0809 10:12:32.939726 30734 net.cpp:652] Copying source layer data
+I0809 10:12:32.939733 30734 net.cpp:652] Copying source layer label
+I0809 10:12:32.939736 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:12:32.939739 30734 net.cpp:652] Copying source layer conv1
+I0809 10:12:32.939743 30734 net.cpp:652] Copying source layer relu1
+I0809 10:12:32.939746 30734 net.cpp:652] Copying source layer pool1
+I0809 10:12:32.939749 30734 net.cpp:652] Copying source layer norm1
+I0809 10:12:32.939752 30734 net.cpp:652] Copying source layer conv2
+I0809 10:12:32.939756 30734 net.cpp:652] Copying source layer relu2
+I0809 10:12:32.939759 30734 net.cpp:652] Copying source layer pool2
+I0809 10:12:32.939762 30734 net.cpp:652] Copying source layer norm2
+I0809 10:12:32.939765 30734 net.cpp:652] Copying source layer conv3
+I0809 10:12:32.939769 30734 net.cpp:652] Copying source layer relu3
+I0809 10:12:32.939772 30734 net.cpp:652] Copying source layer conv4
+I0809 10:12:32.939775 30734 net.cpp:652] Copying source layer relu4
+I0809 10:12:32.939779 30734 net.cpp:652] Copying source layer conv5
+I0809 10:12:32.939782 30734 net.cpp:652] Copying source layer relu5
+I0809 10:12:32.939785 30734 net.cpp:652] Copying source layer pool5
+I0809 10:12:32.939788 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:12:32.939792 30734 net.cpp:652] Copying source layer relu6
+I0809 10:12:32.939795 30734 net.cpp:652] Copying source layer drop6
+I0809 10:12:32.939798 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:12:32.939802 30734 net.cpp:652] Copying source layer relu7
+I0809 10:12:32.939805 30734 net.cpp:652] Copying source layer drop7
+I0809 10:12:32.939808 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:12:32.939812 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:12:32.939815 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:12:32.939818 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:12:38.541620 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.914062
+I0809 10:12:38.541685 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3736 (* 1 = 19.3736 loss)
+I0809 10:12:39.052806 30734 solver.cpp:209] Iteration 1600, loss = 21.0652
+I0809 10:12:39.052850 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.705729
+I0809 10:12:39.052868 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0652 (* 1 = 21.0652 loss)
+I0809 10:12:39.052876 30734 solver.cpp:445] Iteration 1600, lr = 1.18592e-05
+I0809 10:13:09.437711 30734 solver.cpp:209] Iteration 1650, loss = 20.9385
+I0809 10:13:09.437863 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.695312
+I0809 10:13:09.437885 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9385 (* 1 = 20.9385 loss)
+I0809 10:13:09.437891 30734 solver.cpp:445] Iteration 1650, lr = 1.18592e-05
+I0809 10:13:40.533370 30734 solver.cpp:209] Iteration 1700, loss = 20.8449
+I0809 10:13:40.533495 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.729167
+I0809 10:13:40.533524 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.8449 (* 1 = 20.8449 loss)
+I0809 10:13:40.533530 30734 solver.cpp:445] Iteration 1700, lr = 1.18592e-05
+I0809 10:14:12.113143 30734 solver.cpp:209] Iteration 1750, loss = 20.9596
+I0809 10:14:12.113389 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.729167
+I0809 10:14:12.113411 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9596 (* 1 = 20.9596 loss)
+I0809 10:14:12.113418 30734 solver.cpp:445] Iteration 1750, lr = 1.18592e-05
+I0809 10:14:43.273571 30734 solver.cpp:264] Iteration 1800, Testing net (#0)
+I0809 10:14:43.273689 30734 net.cpp:652] Copying source layer data
+I0809 10:14:43.273695 30734 net.cpp:652] Copying source layer label
+I0809 10:14:43.273699 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:14:43.273701 30734 net.cpp:652] Copying source layer conv1
+I0809 10:14:43.273706 30734 net.cpp:652] Copying source layer relu1
+I0809 10:14:43.273710 30734 net.cpp:652] Copying source layer pool1
+I0809 10:14:43.273713 30734 net.cpp:652] Copying source layer norm1
+I0809 10:14:43.273716 30734 net.cpp:652] Copying source layer conv2
+I0809 10:14:43.273720 30734 net.cpp:652] Copying source layer relu2
+I0809 10:14:43.273725 30734 net.cpp:652] Copying source layer pool2
+I0809 10:14:43.273727 30734 net.cpp:652] Copying source layer norm2
+I0809 10:14:43.273731 30734 net.cpp:652] Copying source layer conv3
+I0809 10:14:43.273736 30734 net.cpp:652] Copying source layer relu3
+I0809 10:14:43.273739 30734 net.cpp:652] Copying source layer conv4
+I0809 10:14:43.273743 30734 net.cpp:652] Copying source layer relu4
+I0809 10:14:43.273747 30734 net.cpp:652] Copying source layer conv5
+I0809 10:14:43.273751 30734 net.cpp:652] Copying source layer relu5
+I0809 10:14:43.273756 30734 net.cpp:652] Copying source layer pool5
+I0809 10:14:43.273758 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:14:43.273763 30734 net.cpp:652] Copying source layer relu6
+I0809 10:14:43.273767 30734 net.cpp:652] Copying source layer drop6
+I0809 10:14:43.273771 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:14:43.273775 30734 net.cpp:652] Copying source layer relu7
+I0809 10:14:43.273778 30734 net.cpp:652] Copying source layer drop7
+I0809 10:14:43.273782 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:14:43.273787 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:14:43.273790 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:14:43.273797 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:14:48.626619 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.914621
+I0809 10:14:48.626680 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3527 (* 1 = 19.3527 loss)
+I0809 10:14:49.144960 30734 solver.cpp:209] Iteration 1800, loss = 20.9259
+I0809 10:14:49.145001 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.736979
+I0809 10:14:49.145021 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9259 (* 1 = 20.9259 loss)
+I0809 10:14:49.145030 30734 solver.cpp:445] Iteration 1800, lr = 1.18592e-05
+I0809 10:15:19.598592 30734 solver.cpp:209] Iteration 1850, loss = 20.917
+I0809 10:15:19.598729 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.713542
+I0809 10:15:19.598749 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.917 (* 1 = 20.917 loss)
+I0809 10:15:19.598769 30734 solver.cpp:445] Iteration 1850, lr = 1.18592e-05
+I0809 10:15:50.345577 30734 solver.cpp:209] Iteration 1900, loss = 21.6836
+I0809 10:15:50.345715 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.690104
+I0809 10:15:50.345736 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.6836 (* 1 = 21.6836 loss)
+I0809 10:15:50.345743 30734 solver.cpp:445] Iteration 1900, lr = 1.18592e-05
+I0809 10:16:20.853056 30734 solver.cpp:209] Iteration 1950, loss = 20.8944
+I0809 10:16:20.853195 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.703125
+I0809 10:16:20.853215 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.8944 (* 1 = 20.8944 loss)
+I0809 10:16:20.853230 30734 solver.cpp:445] Iteration 1950, lr = 1.18592e-05
+I0809 10:16:51.159133 30734 net.cpp:735] Serializing 28 layers
+I0809 10:16:52.107421 30734 solver.cpp:334] Snapshotting to snapshots_iter_2000.caffemodel
+I0809 10:16:55.783967 30734 solver.cpp:342] Snapshotting solver state to snapshots_iter_2000.solverstate
+I0809 10:16:58.427500 30734 solver.cpp:264] Iteration 2000, Testing net (#0)
+I0809 10:16:58.427569 30734 net.cpp:652] Copying source layer data
+I0809 10:16:58.427587 30734 net.cpp:652] Copying source layer label
+I0809 10:16:58.427594 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:16:58.427600 30734 net.cpp:652] Copying source layer conv1
+I0809 10:16:58.427611 30734 net.cpp:652] Copying source layer relu1
+I0809 10:16:58.427618 30734 net.cpp:652] Copying source layer pool1
+I0809 10:16:58.427624 30734 net.cpp:652] Copying source layer norm1
+I0809 10:16:58.427630 30734 net.cpp:652] Copying source layer conv2
+I0809 10:16:58.427639 30734 net.cpp:652] Copying source layer relu2
+I0809 10:16:58.427645 30734 net.cpp:652] Copying source layer pool2
+I0809 10:16:58.427651 30734 net.cpp:652] Copying source layer norm2
+I0809 10:16:58.427659 30734 net.cpp:652] Copying source layer conv3
+I0809 10:16:58.427666 30734 net.cpp:652] Copying source layer relu3
+I0809 10:16:58.427673 30734 net.cpp:652] Copying source layer conv4
+I0809 10:16:58.427682 30734 net.cpp:652] Copying source layer relu4
+I0809 10:16:58.427696 30734 net.cpp:652] Copying source layer conv5
+I0809 10:16:58.427705 30734 net.cpp:652] Copying source layer relu5
+I0809 10:16:58.427711 30734 net.cpp:652] Copying source layer pool5
+I0809 10:16:58.427718 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:16:58.427726 30734 net.cpp:652] Copying source layer relu6
+I0809 10:16:58.427733 30734 net.cpp:652] Copying source layer drop6
+I0809 10:16:58.427741 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:16:58.427757 30734 net.cpp:652] Copying source layer relu7
+I0809 10:16:58.427764 30734 net.cpp:652] Copying source layer drop7
+I0809 10:16:58.427772 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:16:58.427779 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:16:58.427793 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:16:58.427800 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:17:04.277807 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.915458
+I0809 10:17:04.277869 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3506 (* 1 = 19.3506 loss)
+I0809 10:17:04.787278 30734 solver.cpp:209] Iteration 2000, loss = 21.1181
+I0809 10:17:04.787331 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.705729
+I0809 10:17:04.787341 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.1181 (* 1 = 21.1181 loss)
+I0809 10:17:04.787356 30734 solver.cpp:445] Iteration 2000, lr = 3.91354e-06
+I0809 10:17:35.855211 30734 solver.cpp:209] Iteration 2050, loss = 22.1326
+I0809 10:17:35.855343 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.658854
+I0809 10:17:35.855363 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.1326 (* 1 = 22.1326 loss)
+I0809 10:17:35.855370 30734 solver.cpp:445] Iteration 2050, lr = 3.91354e-06
+I0809 10:18:06.924089 30734 solver.cpp:209] Iteration 2100, loss = 21.0243
+I0809 10:18:06.924237 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.684896
+I0809 10:18:06.924257 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0243 (* 1 = 21.0243 loss)
+I0809 10:18:06.924275 30734 solver.cpp:445] Iteration 2100, lr = 3.91354e-06
+I0809 10:18:37.074128 30734 solver.cpp:209] Iteration 2150, loss = 20.852
+I0809 10:18:37.074275 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.75
+I0809 10:18:37.074287 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.852 (* 1 = 20.852 loss)
+I0809 10:18:37.074295 30734 solver.cpp:445] Iteration 2150, lr = 3.91354e-06
+I0809 10:19:06.985219 30734 solver.cpp:264] Iteration 2200, Testing net (#0)
+I0809 10:19:06.985258 30734 net.cpp:652] Copying source layer data
+I0809 10:19:06.985263 30734 net.cpp:652] Copying source layer label
+I0809 10:19:06.985266 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:19:06.985270 30734 net.cpp:652] Copying source layer conv1
+I0809 10:19:06.985273 30734 net.cpp:652] Copying source layer relu1
+I0809 10:19:06.985276 30734 net.cpp:652] Copying source layer pool1
+I0809 10:19:06.985280 30734 net.cpp:652] Copying source layer norm1
+I0809 10:19:06.985282 30734 net.cpp:652] Copying source layer conv2
+I0809 10:19:06.985286 30734 net.cpp:652] Copying source layer relu2
+I0809 10:19:06.985290 30734 net.cpp:652] Copying source layer pool2
+I0809 10:19:06.985292 30734 net.cpp:652] Copying source layer norm2
+I0809 10:19:06.985296 30734 net.cpp:652] Copying source layer conv3
+I0809 10:19:06.985299 30734 net.cpp:652] Copying source layer relu3
+I0809 10:19:06.985302 30734 net.cpp:652] Copying source layer conv4
+I0809 10:19:06.985306 30734 net.cpp:652] Copying source layer relu4
+I0809 10:19:06.985311 30734 net.cpp:652] Copying source layer conv5
+I0809 10:19:06.985313 30734 net.cpp:652] Copying source layer relu5
+I0809 10:19:06.985316 30734 net.cpp:652] Copying source layer pool5
+I0809 10:19:06.985319 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:19:06.985323 30734 net.cpp:652] Copying source layer relu6
+I0809 10:19:06.985327 30734 net.cpp:652] Copying source layer drop6
+I0809 10:19:06.985329 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:19:06.985333 30734 net.cpp:652] Copying source layer relu7
+I0809 10:19:06.985337 30734 net.cpp:652] Copying source layer drop7
+I0809 10:19:06.985339 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:19:06.985344 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:19:06.985347 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:19:06.985350 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:19:12.641314 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.9149
+I0809 10:19:12.642007 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3478 (* 1 = 19.3478 loss)
+I0809 10:19:13.151067 30734 solver.cpp:209] Iteration 2200, loss = 20.9753
+I0809 10:19:13.151115 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.692708
+I0809 10:19:13.151134 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9753 (* 1 = 20.9753 loss)
+I0809 10:19:13.151141 30734 solver.cpp:445] Iteration 2200, lr = 3.91354e-06
+I0809 10:19:44.462100 30734 solver.cpp:209] Iteration 2250, loss = 21.047
+I0809 10:19:44.462218 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.708333
+I0809 10:19:44.462245 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.047 (* 1 = 21.047 loss)
+I0809 10:19:44.462254 30734 solver.cpp:445] Iteration 2250, lr = 3.91354e-06
+I0809 10:20:15.217834 30734 solver.cpp:209] Iteration 2300, loss = 20.7922
+I0809 10:20:15.217964 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.742188
+I0809 10:20:15.217984 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.7922 (* 1 = 20.7922 loss)
+I0809 10:20:15.217993 30734 solver.cpp:445] Iteration 2300, lr = 3.91354e-06
+I0809 10:20:45.794314 30734 solver.cpp:209] Iteration 2350, loss = 20.9949
+I0809 10:20:45.794459 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.692708
+I0809 10:20:45.794488 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9949 (* 1 = 20.9949 loss)
+I0809 10:20:45.794503 30734 solver.cpp:445] Iteration 2350, lr = 3.91354e-06
+I0809 10:21:15.909660 30734 solver.cpp:264] Iteration 2400, Testing net (#0)
+I0809 10:21:15.909799 30734 net.cpp:652] Copying source layer data
+I0809 10:21:15.909806 30734 net.cpp:652] Copying source layer label
+I0809 10:21:15.909808 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:21:15.909811 30734 net.cpp:652] Copying source layer conv1
+I0809 10:21:15.909816 30734 net.cpp:652] Copying source layer relu1
+I0809 10:21:15.909821 30734 net.cpp:652] Copying source layer pool1
+I0809 10:21:15.909823 30734 net.cpp:652] Copying source layer norm1
+I0809 10:21:15.909826 30734 net.cpp:652] Copying source layer conv2
+I0809 10:21:15.909831 30734 net.cpp:652] Copying source layer relu2
+I0809 10:21:15.909833 30734 net.cpp:652] Copying source layer pool2
+I0809 10:21:15.909837 30734 net.cpp:652] Copying source layer norm2
+I0809 10:21:15.909839 30734 net.cpp:652] Copying source layer conv3
+I0809 10:21:15.909843 30734 net.cpp:652] Copying source layer relu3
+I0809 10:21:15.909847 30734 net.cpp:652] Copying source layer conv4
+I0809 10:21:15.909852 30734 net.cpp:652] Copying source layer relu4
+I0809 10:21:15.909854 30734 net.cpp:652] Copying source layer conv5
+I0809 10:21:15.909858 30734 net.cpp:652] Copying source layer relu5
+I0809 10:21:15.909862 30734 net.cpp:652] Copying source layer pool5
+I0809 10:21:15.909865 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:21:15.909869 30734 net.cpp:652] Copying source layer relu6
+I0809 10:21:15.909873 30734 net.cpp:652] Copying source layer drop6
+I0809 10:21:15.909875 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:21:15.909879 30734 net.cpp:652] Copying source layer relu7
+I0809 10:21:15.909883 30734 net.cpp:652] Copying source layer drop7
+I0809 10:21:15.909886 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:21:15.909890 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:21:15.909894 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:21:15.909898 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:21:21.257899 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.913783
+I0809 10:21:21.257966 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3423 (* 1 = 19.3423 loss)
+I0809 10:21:21.768569 30734 solver.cpp:209] Iteration 2400, loss = 21.0474
+I0809 10:21:21.768625 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.770833
+I0809 10:21:21.768636 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0474 (* 1 = 21.0474 loss)
+I0809 10:21:21.768653 30734 solver.cpp:445] Iteration 2400, lr = 1.29147e-06
+I0809 10:21:52.318303 30734 solver.cpp:209] Iteration 2450, loss = 21.4918
+I0809 10:21:52.318555 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.651042
+I0809 10:21:52.318590 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.4918 (* 1 = 21.4918 loss)
+I0809 10:21:52.318598 30734 solver.cpp:445] Iteration 2450, lr = 1.29147e-06
+I0809 10:22:23.123363 30734 solver.cpp:209] Iteration 2500, loss = 21.6844
+I0809 10:22:23.123520 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.661458
+I0809 10:22:23.123549 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.6844 (* 1 = 21.6844 loss)
+I0809 10:22:23.123564 30734 solver.cpp:445] Iteration 2500, lr = 1.29147e-06
+I0809 10:22:53.560266 30734 solver.cpp:209] Iteration 2550, loss = 20.7745
+I0809 10:22:53.560400 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.736979
+I0809 10:22:53.560431 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.7745 (* 1 = 20.7745 loss)
+I0809 10:22:53.560437 30734 solver.cpp:445] Iteration 2550, lr = 1.29147e-06
+I0809 10:23:24.149843 30734 solver.cpp:264] Iteration 2600, Testing net (#0)
+I0809 10:23:24.149973 30734 net.cpp:652] Copying source layer data
+I0809 10:23:24.149981 30734 net.cpp:652] Copying source layer label
+I0809 10:23:24.149983 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:23:24.149986 30734 net.cpp:652] Copying source layer conv1
+I0809 10:23:24.149991 30734 net.cpp:652] Copying source layer relu1
+I0809 10:23:24.149994 30734 net.cpp:652] Copying source layer pool1
+I0809 10:23:24.149997 30734 net.cpp:652] Copying source layer norm1
+I0809 10:23:24.150001 30734 net.cpp:652] Copying source layer conv2
+I0809 10:23:24.150004 30734 net.cpp:652] Copying source layer relu2
+I0809 10:23:24.150007 30734 net.cpp:652] Copying source layer pool2
+I0809 10:23:24.150010 30734 net.cpp:652] Copying source layer norm2
+I0809 10:23:24.150014 30734 net.cpp:652] Copying source layer conv3
+I0809 10:23:24.150018 30734 net.cpp:652] Copying source layer relu3
+I0809 10:23:24.150022 30734 net.cpp:652] Copying source layer conv4
+I0809 10:23:24.150025 30734 net.cpp:652] Copying source layer relu4
+I0809 10:23:24.150028 30734 net.cpp:652] Copying source layer conv5
+I0809 10:23:24.150032 30734 net.cpp:652] Copying source layer relu5
+I0809 10:23:24.150037 30734 net.cpp:652] Copying source layer pool5
+I0809 10:23:24.150039 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:23:24.150043 30734 net.cpp:652] Copying source layer relu6
+I0809 10:23:24.150046 30734 net.cpp:652] Copying source layer drop6
+I0809 10:23:24.150050 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:23:24.150054 30734 net.cpp:652] Copying source layer relu7
+I0809 10:23:24.150058 30734 net.cpp:652] Copying source layer drop7
+I0809 10:23:24.150060 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:23:24.150065 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:23:24.150068 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:23:24.150071 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:23:30.191537 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.914062
+I0809 10:23:30.191598 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3455 (* 1 = 19.3455 loss)
+I0809 10:23:30.704295 30734 solver.cpp:209] Iteration 2600, loss = 22.112
+I0809 10:23:30.704339 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.658854
+I0809 10:23:30.704357 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 22.112 (* 1 = 22.112 loss)
+I0809 10:23:30.704373 30734 solver.cpp:445] Iteration 2600, lr = 1.29147e-06
+I0809 10:24:01.881108 30734 solver.cpp:209] Iteration 2650, loss = 21.142
+I0809 10:24:01.881299 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.6875
+I0809 10:24:01.881327 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.142 (* 1 = 21.142 loss)
+I0809 10:24:01.881335 30734 solver.cpp:445] Iteration 2650, lr = 1.29147e-06
+I0809 10:24:32.501749 30734 solver.cpp:209] Iteration 2700, loss = 20.9918
+I0809 10:24:32.501886 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.664062
+I0809 10:24:32.501914 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9918 (* 1 = 20.9918 loss)
+I0809 10:24:32.501922 30734 solver.cpp:445] Iteration 2700, lr = 1.29147e-06
+I0809 10:25:03.337610 30734 solver.cpp:209] Iteration 2750, loss = 20.9141
+I0809 10:25:03.337751 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.700521
+I0809 10:25:03.337779 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.9141 (* 1 = 20.9141 loss)
+I0809 10:25:03.337795 30734 solver.cpp:445] Iteration 2750, lr = 1.29147e-06
+I0809 10:25:32.709228 30734 solver.cpp:264] Iteration 2800, Testing net (#0)
+I0809 10:25:32.709273 30734 net.cpp:652] Copying source layer data
+I0809 10:25:32.709278 30734 net.cpp:652] Copying source layer label
+I0809 10:25:32.709281 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:25:32.709285 30734 net.cpp:652] Copying source layer conv1
+I0809 10:25:32.709290 30734 net.cpp:652] Copying source layer relu1
+I0809 10:25:32.709292 30734 net.cpp:652] Copying source layer pool1
+I0809 10:25:32.709295 30734 net.cpp:652] Copying source layer norm1
+I0809 10:25:32.709298 30734 net.cpp:652] Copying source layer conv2
+I0809 10:25:32.709302 30734 net.cpp:652] Copying source layer relu2
+I0809 10:25:32.709306 30734 net.cpp:652] Copying source layer pool2
+I0809 10:25:32.709308 30734 net.cpp:652] Copying source layer norm2
+I0809 10:25:32.709311 30734 net.cpp:652] Copying source layer conv3
+I0809 10:25:32.709316 30734 net.cpp:652] Copying source layer relu3
+I0809 10:25:32.709318 30734 net.cpp:652] Copying source layer conv4
+I0809 10:25:32.709321 30734 net.cpp:652] Copying source layer relu4
+I0809 10:25:32.709326 30734 net.cpp:652] Copying source layer conv5
+I0809 10:25:32.709329 30734 net.cpp:652] Copying source layer relu5
+I0809 10:25:32.709332 30734 net.cpp:652] Copying source layer pool5
+I0809 10:25:32.709336 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:25:32.709339 30734 net.cpp:652] Copying source layer relu6
+I0809 10:25:32.709342 30734 net.cpp:652] Copying source layer drop6
+I0809 10:25:32.709345 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:25:32.709349 30734 net.cpp:652] Copying source layer relu7
+I0809 10:25:32.709352 30734 net.cpp:652] Copying source layer drop7
+I0809 10:25:32.709357 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:25:32.709359 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:25:32.709363 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:25:32.709367 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:25:38.433778 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.912946
+I0809 10:25:38.434049 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3407 (* 1 = 19.3407 loss)
+I0809 10:25:38.945786 30734 solver.cpp:209] Iteration 2800, loss = 21.0038
+I0809 10:25:38.945838 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.700521
+I0809 10:25:38.945858 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.0038 (* 1 = 21.0038 loss)
+I0809 10:25:38.945864 30734 solver.cpp:445] Iteration 2800, lr = 4.26185e-07
+I0809 10:26:09.321301 30734 solver.cpp:209] Iteration 2850, loss = 20.7422
+I0809 10:26:09.321451 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.705729
+I0809 10:26:09.321480 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.7422 (* 1 = 20.7422 loss)
+I0809 10:26:09.321487 30734 solver.cpp:445] Iteration 2850, lr = 4.26185e-07
+I0809 10:26:39.918534 30734 solver.cpp:209] Iteration 2900, loss = 21.1278
+I0809 10:26:39.918686 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.6875
+I0809 10:26:39.918716 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 21.1278 (* 1 = 21.1278 loss)
+I0809 10:26:39.918732 30734 solver.cpp:445] Iteration 2900, lr = 4.26185e-07
+I0809 10:27:11.201200 30734 solver.cpp:209] Iteration 2950, loss = 20.8853
+I0809 10:27:11.201339 30734 solver.cpp:224]     Train net output #0: accuracy_sphere = 0.731771
+I0809 10:27:11.201360 30734 solver.cpp:224]     Train net output #1: loss_sphere-new = 20.8853 (* 1 = 20.8853 loss)
+I0809 10:27:11.201369 30734 solver.cpp:445] Iteration 2950, lr = 4.26185e-07
+I0809 10:27:41.753885 30734 net.cpp:735] Serializing 28 layers
+I0809 10:27:42.694555 30734 solver.cpp:334] Snapshotting to snapshots_iter_3000.caffemodel
+I0809 10:27:46.430485 30734 solver.cpp:342] Snapshotting solver state to snapshots_iter_3000.solverstate
+I0809 10:27:49.224164 30734 solver.cpp:246] Iteration 3000, loss = 20.797
+I0809 10:27:49.224217 30734 solver.cpp:264] Iteration 3000, Testing net (#0)
+I0809 10:27:49.224225 30734 net.cpp:652] Copying source layer data
+I0809 10:27:49.224231 30734 net.cpp:652] Copying source layer label
+I0809 10:27:49.224234 30734 net.cpp:652] Copying source layer label_label_0_split
+I0809 10:27:49.224237 30734 net.cpp:652] Copying source layer conv1
+I0809 10:27:49.224242 30734 net.cpp:652] Copying source layer relu1
+I0809 10:27:49.224246 30734 net.cpp:652] Copying source layer pool1
+I0809 10:27:49.224248 30734 net.cpp:652] Copying source layer norm1
+I0809 10:27:49.224251 30734 net.cpp:652] Copying source layer conv2
+I0809 10:27:49.224256 30734 net.cpp:652] Copying source layer relu2
+I0809 10:27:49.224258 30734 net.cpp:652] Copying source layer pool2
+I0809 10:27:49.224261 30734 net.cpp:652] Copying source layer norm2
+I0809 10:27:49.224264 30734 net.cpp:652] Copying source layer conv3
+I0809 10:27:49.224268 30734 net.cpp:652] Copying source layer relu3
+I0809 10:27:49.224272 30734 net.cpp:652] Copying source layer conv4
+I0809 10:27:49.224275 30734 net.cpp:652] Copying source layer relu4
+I0809 10:27:49.224279 30734 net.cpp:652] Copying source layer conv5
+I0809 10:27:49.224283 30734 net.cpp:652] Copying source layer relu5
+I0809 10:27:49.224287 30734 net.cpp:652] Copying source layer pool5
+I0809 10:27:49.224290 30734 net.cpp:652] Copying source layer fc6-new
+I0809 10:27:49.224294 30734 net.cpp:652] Copying source layer relu6
+I0809 10:27:49.224298 30734 net.cpp:652] Copying source layer drop6
+I0809 10:27:49.224300 30734 net.cpp:652] Copying source layer fc7-new
+I0809 10:27:49.224304 30734 net.cpp:652] Copying source layer relu7
+I0809 10:27:49.224308 30734 net.cpp:652] Copying source layer drop7
+I0809 10:27:49.224311 30734 net.cpp:652] Copying source layer fc8-new
+I0809 10:27:49.224315 30734 net.cpp:652] Copying source layer fc8-new_fc8-new_0_split
+I0809 10:27:49.224318 30734 net.cpp:652] Copying source layer loss_sphere-new
+I0809 10:27:49.224321 30734 net.cpp:652] Copying source layer accuracy_sphere
+I0809 10:27:55.005959 30734 solver.cpp:315]     Test net output #0: accuracy_sphere = 0.914062
+I0809 10:27:55.006031 30734 solver.cpp:315]     Test net output #1: loss_sphere-new = 19.3414 (* 1 = 19.3414 loss)
+I0809 10:27:55.006039 30734 solver.cpp:251] Optimization Done.
+I0809 10:27:55.006044 30734 caffe.cpp:121] Optimization Done.
+I0809 10:27:55.218832 30734 lmdb_dataset.cpp:237] LMDB: Close
+I0809 10:27:55.239205 30734 lmdb_dataset.cpp:237] LMDB: Close
+I0809 10:27:55.244959 30734 lmdb_dataset.cpp:237] LMDB: Close
+I0809 10:27:55.322298 30734 lmdb_dataset.cpp:237] LMDB: Close

@@ -1,0 +1,37 @@
+nohup: 忽略输入
+I0814 19:44:20.329761 18851 caffe.cpp:99] Use GPU with device ID 0
+I0814 19:44:21.301570 18851 caffe.cpp:107] Starting Optimization
+I0814 19:44:21.301668 18851 solver.cpp:32] Initializing solver from parameters: 
+test_iter: 10
+test_interval: 200
+base_lr: 0.0033
+display: 50
+max_iter: 30000
+lr_policy: "step"
+gamma: 0.33
+momentum: 0.9
+weight_decay: 0.0005
+stepsize: 600
+snapshot: 1000
+snapshot_prefix: "snapshots"
+solver_mode: GPU
+debug_info: false
+net: "/home/cad/disk/linux/RenderForCNN-master/train/train_val_engine_sphere1.prototxt"
+I0814 19:44:21.301708 18851 solver.cpp:67] Creating training net from net file: /home/cad/disk/linux/RenderForCNN-master/train/train_val_engine_sphere1.prototxt
+[libprotobuf ERROR google/protobuf/text_format.cc:274] Error parsing text-format caffe.NetParameter: 2:7: Message type "caffe.NetParameter" has no field named "layer".
+F0814 19:44:21.301764 18851 upgrade_proto.cpp:631] Check failed: ReadProtoFromTextFile(param_file, param) Failed to parse NetParameter file: /home/cad/disk/linux/RenderForCNN-master/train/train_val_engine_sphere1.prototxt
+*** Check failure stack trace: ***
+    @     0x7fdd9e01b5cd  google::LogMessage::Fail()
+    @     0x7fdd9e01d433  google::LogMessage::SendToLog()
+    @     0x7fdd9e01b15b  google::LogMessage::Flush()
+    @     0x7fdd9e01de1e  google::LogMessageFatal::~LogMessageFatal()
+    @           0x494f21  caffe::ReadNetParamsFromTextFileOrDie()
+    @           0x4750af  caffe::Solver<>::InitTrainNet()
+    @           0x476272  caffe::Solver<>::Init()
+    @           0x4763c6  caffe::Solver<>::Solver()
+    @           0x41f010  caffe::GetSolver<>()
+    @           0x41a08a  train()
+    @           0x414228  main
+    @     0x7fdd9aff3830  __libc_start_main
+    @           0x418b19  _start
+    @              (nil)  (unknown)

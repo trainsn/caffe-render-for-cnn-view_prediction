@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="Examples" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\CMakeScripts\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\share\;CMake Files\..\..\..\..\..\usr\share\OpenCV\;CMake Files\src\;CMake Files\src\gtest\;CMake Files\src\caffe\;CMake Files\src\caffe\proto\;CMake Files\src\caffe\test\;CMake Files\src\caffe\test\test_data\;CMake Files\tools\;CMake Files\examples\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_mnist_siamese_data">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/siamese/convert_mnist_siamese_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_mnist_siamese_data" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_mnist_siamese_data/fast">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/siamese/convert_mnist_siamese_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_mnist_siamese_data/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_cifar_data">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/cifar10/convert_cifar_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_cifar_data" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_cifar_data/fast">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/cifar10/convert_cifar_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_cifar_data/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_mnist_data">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/mnist/convert_mnist_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_mnist_data" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="convert_mnist_data/fast">
+         <Option output="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/mnist/convert_mnist_data" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/include" />
+            <Add directory="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/atlas" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/hdf5/serial" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 convert_mnist_data/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/cifar10/convert_cifar_data.cpp">
+         <Option target="convert_cifar_data"/>
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/mnist/convert_mnist_data.cpp">
+         <Option target="convert_mnist_data"/>
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/siamese/convert_mnist_siamese_data.cpp">
+         <Option target="convert_mnist_siamese_data"/>
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindBoost.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindGlog.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindGFlags.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindAtlas.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindLevelDB.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindSnappy.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindLMDB.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindProtobuf.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindProtobuf.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/CMakeScripts/FindProtobuf.cmake">
+          <Option virtualFolder="CMake Files\CMakeScripts\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/../../../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/../../../../../usr/share/OpenCV/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/../../../../../usr/share/OpenCV/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/../../../../../usr/share/OpenCV/OpenCVModules-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/gtest/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\gtest\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/gtest/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\gtest\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/proto/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\proto\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/proto/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\proto\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/proto/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\proto\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/cmake_test_defines.hpp.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/cmake_test_defines.hpp.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/cmake_test_defines.hpp.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/test_data/sample_data_list.txt.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\test_data\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/test_data/sample_data_list.txt.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\test_data\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/src/caffe/test/test_data/sample_data_list.txt.in">
+          <Option virtualFolder="CMake Files\src\caffe\test\test_data\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/tools/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\tools\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/tools/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\tools\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\" />
+      </Unit>
+      <Unit filename="/home/cad/disk/linux/caffe-render-for-cnn-view_prediction/examples/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

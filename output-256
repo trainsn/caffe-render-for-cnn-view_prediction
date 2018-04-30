@@ -1,0 +1,1904 @@
+nohup: 忽略输入
+I0802 11:45:34.185953  5938 caffe.cpp:99] Use GPU with device ID 0
+I0802 11:45:35.155454  5938 caffe.cpp:107] Starting Optimization
+I0802 11:45:35.155552  5938 solver.cpp:32] Initializing solver from parameters: 
+test_iter: 100
+test_interval: 200
+base_lr: 0.001
+display: 50
+max_iter: 3000
+lr_policy: "step"
+gamma: 0.33
+momentum: 0.9
+weight_decay: 0.0005
+stepsize: 600
+snapshot: 1000
+snapshot_prefix: "snapshots"
+solver_mode: GPU
+debug_info: false
+net: "/home/cad/disk/linux/RenderForCNN-master/train/train_val_engine.prototxt"
+I0802 11:45:35.155580  5938 solver.cpp:67] Creating training net from net file: /home/cad/disk/linux/RenderForCNN-master/train/train_val_engine.prototxt
+I0802 11:45:35.155843  5938 net.cpp:275] The NetState phase (0) differed from the phase (1) specified by a rule in layer data
+I0802 11:45:35.155869  5938 net.cpp:275] The NetState phase (0) differed from the phase (1) specified by a rule in layer label
+I0802 11:45:35.156011  5938 net.cpp:39] Initializing net from parameters: 
+name: "RenderForCNN"
+layers {
+  top: "data"
+  name: "data"
+  type: DATA
+  data_param {
+    source: "/home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_train_image"
+    batch_size: 256
+    backend: LMDB
+  }
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    mirror: false
+    mean_file: "/home/cad/disk/linux/RenderForCNN-master/train/imagenet_mean.binaryproto"
+  }
+}
+layers {
+  top: "label"
+  name: "label"
+  type: DATA
+  data_param {
+    source: "/home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_train_label"
+    batch_size: 256
+    backend: LMDB
+  }
+  include {
+    phase: TRAIN
+  }
+}
+layers {
+  bottom: "label"
+  top: "label_class"
+  top: "label_azimuth"
+  top: "label_elevation"
+  name: "labe-slice"
+  type: SLICE
+  slice_param {
+    slice_dim: 1
+    slice_point: 1
+    slice_point: 2
+  }
+}
+layers {
+  bottom: "data"
+  top: "conv1"
+  name: "conv1"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 96
+    kernel_size: 11
+    stride: 4
+  }
+}
+layers {
+  bottom: "conv1"
+  top: "conv1"
+  name: "relu1"
+  type: RELU
+}
+layers {
+  bottom: "conv1"
+  top: "pool1"
+  name: "pool1"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool1"
+  top: "norm1"
+  name: "norm1"
+  type: LRN
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layers {
+  bottom: "norm1"
+  top: "conv2"
+  name: "conv2"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 256
+    pad: 2
+    kernel_size: 5
+    group: 2
+  }
+}
+layers {
+  bottom: "conv2"
+  top: "conv2"
+  name: "relu2"
+  type: RELU
+}
+layers {
+  bottom: "conv2"
+  top: "pool2"
+  name: "pool2"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool2"
+  top: "norm2"
+  name: "norm2"
+  type: LRN
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layers {
+  bottom: "norm2"
+  top: "conv3"
+  name: "conv3"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+  }
+}
+layers {
+  bottom: "conv3"
+  top: "conv3"
+  name: "relu3"
+  type: RELU
+}
+layers {
+  bottom: "conv3"
+  top: "conv4-new"
+  name: "conv4-new"
+  type: CONVOLUTION
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+    group: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "conv4-new"
+  top: "conv4-new"
+  name: "relu4"
+  type: RELU
+}
+layers {
+  bottom: "conv4-new"
+  top: "conv5-new"
+  name: "conv5-new"
+  type: CONVOLUTION
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    group: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "conv5-new"
+  top: "conv5-new"
+  name: "relu5"
+  type: RELU
+}
+layers {
+  bottom: "conv5-new"
+  top: "pool5"
+  name: "pool5"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool5"
+  top: "fc6-new"
+  name: "fc6-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 4096
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc6-new"
+  name: "relu6"
+  type: RELU
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc6-new"
+  name: "drop6"
+  type: DROPOUT
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc7-new"
+  name: "fc7-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 4096
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc7-new"
+  name: "relu7"
+  type: RELU
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc7-new"
+  name: "drop7"
+  type: DROPOUT
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc-azimuth-new"
+  name: "fc-azimuth-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 180
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc-azimuth-new"
+  bottom: "label_azimuth"
+  top: "loss_azimuth-new"
+  name: "loss_azimuth-new"
+  type: SOFTMAX_WITH_VIEW_LOSS
+  loss_weight: 1
+  softmax_with_view_loss_param {
+    bandwidth: 5
+    sigma: 5
+    pos_weight: 1
+    neg_weight: 0
+    period: 180
+  }
+}
+layers {
+  bottom: "fc-azimuth-new"
+  bottom: "label_azimuth"
+  top: "accuracy_azimuth"
+  name: "accuracy_azimuth"
+  type: ACCURACY_VIEW
+  accuracy_view_param {
+    tol_angle: 3
+    period: 180
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc-elevation-new"
+  name: "fc-elevation-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 360
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc-elevation-new"
+  bottom: "label_elevation"
+  top: "loss_elevation-new"
+  name: "loss_elevation-new"
+  type: SOFTMAX_WITH_VIEW_LOSS
+  loss_weight: 1
+  softmax_with_view_loss_param {
+    bandwidth: 5
+    sigma: 5
+    pos_weight: 1
+    neg_weight: 0
+    period: 360
+  }
+}
+layers {
+  bottom: "fc-elevation-new"
+  bottom: "label_elevation"
+  top: "accuracy_elevation"
+  name: "accuracy_elevation"
+  type: ACCURACY_VIEW
+  accuracy_view_param {
+    tol_angle: 3
+    period: 360
+  }
+}
+layers {
+  bottom: "label_class"
+  bottom: "label_class"
+  top: "accuracy_class"
+  name: "accuracy_class"
+  type: ACCURACY
+}
+state {
+  phase: TRAIN
+}
+I0802 11:45:35.156155  5938 layer_factory.hpp:78] Creating layer data
+I0802 11:45:35.156183  5938 data_transformer.cpp:24] Loading mean file from/home/cad/disk/linux/RenderForCNN-master/train/imagenet_mean.binaryproto
+I0802 11:45:35.157027  5938 net.cpp:67] Creating Layer data
+I0802 11:45:35.157044  5938 net.cpp:356] data -> data
+I0802 11:45:35.157063  5938 net.cpp:96] Setting up data
+I0802 11:45:35.157068  5938 data_layer.cpp:32] Opening dataset /home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_train_image
+I0802 11:45:35.157229  5938 data_layer.cpp:71] output data size: 256,3,256,256
+I0802 11:45:35.157299  5938 net.cpp:103] Top shape: 256 3 256 256 (50331648)
+I0802 11:45:35.157307  5938 layer_factory.hpp:78] Creating layer label
+I0802 11:45:35.157323  5938 net.cpp:67] Creating Layer label
+I0802 11:45:35.157328  5938 net.cpp:356] label -> label
+I0802 11:45:35.157346  5938 net.cpp:96] Setting up label
+I0802 11:45:35.157351  5938 data_layer.cpp:32] Opening dataset /home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_train_label
+I0802 11:45:35.157397  5938 data_layer.cpp:71] output data size: 256,3,1,1
+I0802 11:45:35.157445  5938 net.cpp:103] Top shape: 256 3 1 1 (768)
+I0802 11:45:35.157454  5938 layer_factory.hpp:78] Creating layer labe-slice
+I0802 11:45:35.157474  5938 net.cpp:67] Creating Layer labe-slice
+I0802 11:45:35.157492  5938 net.cpp:394] labe-slice <- label
+I0802 11:45:35.157510  5938 net.cpp:356] labe-slice -> label_class
+I0802 11:45:35.157526  5938 net.cpp:356] labe-slice -> label_azimuth
+I0802 11:45:35.157531  5938 net.cpp:356] labe-slice -> label_elevation
+I0802 11:45:35.157537  5938 net.cpp:96] Setting up labe-slice
+I0802 11:45:35.157544  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157548  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157552  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157555  5938 layer_factory.hpp:78] Creating layer label_class_labe-slice_0_split
+I0802 11:45:35.157572  5938 net.cpp:67] Creating Layer label_class_labe-slice_0_split
+I0802 11:45:35.157575  5938 net.cpp:394] label_class_labe-slice_0_split <- label_class
+I0802 11:45:35.157582  5938 net.cpp:356] label_class_labe-slice_0_split -> label_class_labe-slice_0_split_0
+I0802 11:45:35.157588  5938 net.cpp:356] label_class_labe-slice_0_split -> label_class_labe-slice_0_split_1
+I0802 11:45:35.157601  5938 net.cpp:96] Setting up label_class_labe-slice_0_split
+I0802 11:45:35.157606  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157609  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157613  5938 layer_factory.hpp:78] Creating layer label_azimuth_labe-slice_1_split
+I0802 11:45:35.157618  5938 net.cpp:67] Creating Layer label_azimuth_labe-slice_1_split
+I0802 11:45:35.157624  5938 net.cpp:394] label_azimuth_labe-slice_1_split <- label_azimuth
+I0802 11:45:35.157629  5938 net.cpp:356] label_azimuth_labe-slice_1_split -> label_azimuth_labe-slice_1_split_0
+I0802 11:45:35.157634  5938 net.cpp:356] label_azimuth_labe-slice_1_split -> label_azimuth_labe-slice_1_split_1
+I0802 11:45:35.157640  5938 net.cpp:96] Setting up label_azimuth_labe-slice_1_split
+I0802 11:45:35.157644  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157649  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157652  5938 layer_factory.hpp:78] Creating layer label_elevation_labe-slice_2_split
+I0802 11:45:35.157657  5938 net.cpp:67] Creating Layer label_elevation_labe-slice_2_split
+I0802 11:45:35.157661  5938 net.cpp:394] label_elevation_labe-slice_2_split <- label_elevation
+I0802 11:45:35.157666  5938 net.cpp:356] label_elevation_labe-slice_2_split -> label_elevation_labe-slice_2_split_0
+I0802 11:45:35.157672  5938 net.cpp:356] label_elevation_labe-slice_2_split -> label_elevation_labe-slice_2_split_1
+I0802 11:45:35.157678  5938 net.cpp:96] Setting up label_elevation_labe-slice_2_split
+I0802 11:45:35.157682  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157686  5938 net.cpp:103] Top shape: 256 1 1 1 (256)
+I0802 11:45:35.157690  5938 layer_factory.hpp:78] Creating layer conv1
+I0802 11:45:35.157696  5938 net.cpp:67] Creating Layer conv1
+I0802 11:45:35.157699  5938 net.cpp:394] conv1 <- data
+I0802 11:45:35.157704  5938 net.cpp:356] conv1 -> conv1
+I0802 11:45:35.157709  5938 net.cpp:96] Setting up conv1
+I0802 11:45:35.157753  5938 net.cpp:103] Top shape: 256 96 62 62 (94470144)
+I0802 11:45:35.157773  5938 layer_factory.hpp:78] Creating layer relu1
+I0802 11:45:35.157779  5938 net.cpp:67] Creating Layer relu1
+I0802 11:45:35.157783  5938 net.cpp:394] relu1 <- conv1
+I0802 11:45:35.157788  5938 net.cpp:345] relu1 -> conv1 (in-place)
+I0802 11:45:35.157793  5938 net.cpp:96] Setting up relu1
+I0802 11:45:35.157799  5938 net.cpp:103] Top shape: 256 96 62 62 (94470144)
+I0802 11:45:35.157802  5938 layer_factory.hpp:78] Creating layer pool1
+I0802 11:45:35.157809  5938 net.cpp:67] Creating Layer pool1
+I0802 11:45:35.157812  5938 net.cpp:394] pool1 <- conv1
+I0802 11:45:35.157817  5938 net.cpp:356] pool1 -> pool1
+I0802 11:45:35.157822  5938 net.cpp:96] Setting up pool1
+I0802 11:45:35.157840  5938 net.cpp:103] Top shape: 256 96 31 31 (23617536)
+I0802 11:45:35.157845  5938 layer_factory.hpp:78] Creating layer norm1
+I0802 11:45:35.157850  5938 net.cpp:67] Creating Layer norm1
+I0802 11:45:35.157855  5938 net.cpp:394] norm1 <- pool1
+I0802 11:45:35.157871  5938 net.cpp:356] norm1 -> norm1
+I0802 11:45:35.157887  5938 net.cpp:96] Setting up norm1
+I0802 11:45:35.157892  5938 net.cpp:103] Top shape: 256 96 31 31 (23617536)
+I0802 11:45:35.157896  5938 layer_factory.hpp:78] Creating layer conv2
+I0802 11:45:35.157902  5938 net.cpp:67] Creating Layer conv2
+I0802 11:45:35.157905  5938 net.cpp:394] conv2 <- norm1
+I0802 11:45:35.157910  5938 net.cpp:356] conv2 -> conv2
+I0802 11:45:35.157915  5938 net.cpp:96] Setting up conv2
+I0802 11:45:35.158116  5938 net.cpp:103] Top shape: 256 256 31 31 (62980096)
+I0802 11:45:35.158134  5938 layer_factory.hpp:78] Creating layer relu2
+I0802 11:45:35.158139  5938 net.cpp:67] Creating Layer relu2
+I0802 11:45:35.158143  5938 net.cpp:394] relu2 <- conv2
+I0802 11:45:35.158149  5938 net.cpp:345] relu2 -> conv2 (in-place)
+I0802 11:45:35.158154  5938 net.cpp:96] Setting up relu2
+I0802 11:45:35.158157  5938 net.cpp:103] Top shape: 256 256 31 31 (62980096)
+I0802 11:45:35.158161  5938 layer_factory.hpp:78] Creating layer pool2
+I0802 11:45:35.158165  5938 net.cpp:67] Creating Layer pool2
+I0802 11:45:35.158169  5938 net.cpp:394] pool2 <- conv2
+I0802 11:45:35.158174  5938 net.cpp:356] pool2 -> pool2
+I0802 11:45:35.158179  5938 net.cpp:96] Setting up pool2
+I0802 11:45:35.158185  5938 net.cpp:103] Top shape: 256 256 15 15 (14745600)
+I0802 11:45:35.158188  5938 layer_factory.hpp:78] Creating layer norm2
+I0802 11:45:35.158193  5938 net.cpp:67] Creating Layer norm2
+I0802 11:45:35.158197  5938 net.cpp:394] norm2 <- pool2
+I0802 11:45:35.158202  5938 net.cpp:356] norm2 -> norm2
+I0802 11:45:35.158208  5938 net.cpp:96] Setting up norm2
+I0802 11:45:35.158215  5938 net.cpp:103] Top shape: 256 256 15 15 (14745600)
+I0802 11:45:35.158218  5938 layer_factory.hpp:78] Creating layer conv3
+I0802 11:45:35.158223  5938 net.cpp:67] Creating Layer conv3
+I0802 11:45:35.158227  5938 net.cpp:394] conv3 <- norm2
+I0802 11:45:35.158232  5938 net.cpp:356] conv3 -> conv3
+I0802 11:45:35.158237  5938 net.cpp:96] Setting up conv3
+I0802 11:45:35.158962  5938 net.cpp:103] Top shape: 256 384 15 15 (22118400)
+I0802 11:45:35.158993  5938 layer_factory.hpp:78] Creating layer relu3
+I0802 11:45:35.158998  5938 net.cpp:67] Creating Layer relu3
+I0802 11:45:35.159003  5938 net.cpp:394] relu3 <- conv3
+I0802 11:45:35.159008  5938 net.cpp:345] relu3 -> conv3 (in-place)
+I0802 11:45:35.159013  5938 net.cpp:96] Setting up relu3
+I0802 11:45:35.159018  5938 net.cpp:103] Top shape: 256 384 15 15 (22118400)
+I0802 11:45:35.159021  5938 layer_factory.hpp:78] Creating layer conv4-new
+I0802 11:45:35.159036  5938 net.cpp:67] Creating Layer conv4-new
+I0802 11:45:35.159040  5938 net.cpp:394] conv4-new <- conv3
+I0802 11:45:35.159045  5938 net.cpp:356] conv4-new -> conv4-new
+I0802 11:45:35.159051  5938 net.cpp:96] Setting up conv4-new
+I0802 11:45:35.165225  5938 net.cpp:103] Top shape: 256 384 15 15 (22118400)
+I0802 11:45:35.165257  5938 layer_factory.hpp:78] Creating layer relu4
+I0802 11:45:35.165263  5938 net.cpp:67] Creating Layer relu4
+I0802 11:45:35.165268  5938 net.cpp:394] relu4 <- conv4-new
+I0802 11:45:35.165274  5938 net.cpp:345] relu4 -> conv4-new (in-place)
+I0802 11:45:35.165280  5938 net.cpp:96] Setting up relu4
+I0802 11:45:35.165284  5938 net.cpp:103] Top shape: 256 384 15 15 (22118400)
+I0802 11:45:35.165288  5938 layer_factory.hpp:78] Creating layer conv5-new
+I0802 11:45:35.165294  5938 net.cpp:67] Creating Layer conv5-new
+I0802 11:45:35.165298  5938 net.cpp:394] conv5-new <- conv4-new
+I0802 11:45:35.165303  5938 net.cpp:356] conv5-new -> conv5-new
+I0802 11:45:35.165309  5938 net.cpp:96] Setting up conv5-new
+I0802 11:45:35.169783  5938 net.cpp:103] Top shape: 256 256 15 15 (14745600)
+I0802 11:45:35.169807  5938 layer_factory.hpp:78] Creating layer relu5
+I0802 11:45:35.169826  5938 net.cpp:67] Creating Layer relu5
+I0802 11:45:35.169831  5938 net.cpp:394] relu5 <- conv5-new
+I0802 11:45:35.169837  5938 net.cpp:345] relu5 -> conv5-new (in-place)
+I0802 11:45:35.169842  5938 net.cpp:96] Setting up relu5
+I0802 11:45:35.169847  5938 net.cpp:103] Top shape: 256 256 15 15 (14745600)
+I0802 11:45:35.169864  5938 layer_factory.hpp:78] Creating layer pool5
+I0802 11:45:35.169885  5938 net.cpp:67] Creating Layer pool5
+I0802 11:45:35.169890  5938 net.cpp:394] pool5 <- conv5-new
+I0802 11:45:35.169895  5938 net.cpp:356] pool5 -> pool5
+I0802 11:45:35.169901  5938 net.cpp:96] Setting up pool5
+I0802 11:45:35.169906  5938 net.cpp:103] Top shape: 256 256 7 7 (3211264)
+I0802 11:45:35.169910  5938 layer_factory.hpp:78] Creating layer fc6-new
+I0802 11:45:35.169916  5938 net.cpp:67] Creating Layer fc6-new
+I0802 11:45:35.169920  5938 net.cpp:394] fc6-new <- pool5
+I0802 11:45:35.169926  5938 net.cpp:356] fc6-new -> fc6-new
+I0802 11:45:35.169932  5938 net.cpp:96] Setting up fc6-new
+I0802 11:45:35.577075  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.577121  5938 layer_factory.hpp:78] Creating layer relu6
+I0802 11:45:35.577138  5938 net.cpp:67] Creating Layer relu6
+I0802 11:45:35.577143  5938 net.cpp:394] relu6 <- fc6-new
+I0802 11:45:35.577150  5938 net.cpp:345] relu6 -> fc6-new (in-place)
+I0802 11:45:35.577164  5938 net.cpp:96] Setting up relu6
+I0802 11:45:35.577169  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.577173  5938 layer_factory.hpp:78] Creating layer drop6
+I0802 11:45:35.577179  5938 net.cpp:67] Creating Layer drop6
+I0802 11:45:35.577183  5938 net.cpp:394] drop6 <- fc6-new
+I0802 11:45:35.577188  5938 net.cpp:345] drop6 -> fc6-new (in-place)
+I0802 11:45:35.577193  5938 net.cpp:96] Setting up drop6
+I0802 11:45:35.577196  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.577200  5938 layer_factory.hpp:78] Creating layer fc7-new
+I0802 11:45:35.577206  5938 net.cpp:67] Creating Layer fc7-new
+I0802 11:45:35.577210  5938 net.cpp:394] fc7-new <- fc6-new
+I0802 11:45:35.577215  5938 net.cpp:356] fc7-new -> fc7-new
+I0802 11:45:35.577221  5938 net.cpp:96] Setting up fc7-new
+I0802 11:45:35.733602  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.733654  5938 layer_factory.hpp:78] Creating layer relu7
+I0802 11:45:35.733664  5938 net.cpp:67] Creating Layer relu7
+I0802 11:45:35.733669  5938 net.cpp:394] relu7 <- fc7-new
+I0802 11:45:35.733677  5938 net.cpp:345] relu7 -> fc7-new (in-place)
+I0802 11:45:35.733683  5938 net.cpp:96] Setting up relu7
+I0802 11:45:35.733695  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.733700  5938 layer_factory.hpp:78] Creating layer drop7
+I0802 11:45:35.733705  5938 net.cpp:67] Creating Layer drop7
+I0802 11:45:35.733708  5938 net.cpp:394] drop7 <- fc7-new
+I0802 11:45:35.733713  5938 net.cpp:345] drop7 -> fc7-new (in-place)
+I0802 11:45:35.733718  5938 net.cpp:96] Setting up drop7
+I0802 11:45:35.733723  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.733727  5938 layer_factory.hpp:78] Creating layer fc7-new_drop7_0_split
+I0802 11:45:35.733733  5938 net.cpp:67] Creating Layer fc7-new_drop7_0_split
+I0802 11:45:35.733736  5938 net.cpp:394] fc7-new_drop7_0_split <- fc7-new
+I0802 11:45:35.733741  5938 net.cpp:356] fc7-new_drop7_0_split -> fc7-new_drop7_0_split_0
+I0802 11:45:35.733748  5938 net.cpp:356] fc7-new_drop7_0_split -> fc7-new_drop7_0_split_1
+I0802 11:45:35.733754  5938 net.cpp:96] Setting up fc7-new_drop7_0_split
+I0802 11:45:35.733759  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.733763  5938 net.cpp:103] Top shape: 256 4096 1 1 (1048576)
+I0802 11:45:35.733767  5938 layer_factory.hpp:78] Creating layer fc-azimuth-new
+I0802 11:45:35.733773  5938 net.cpp:67] Creating Layer fc-azimuth-new
+I0802 11:45:35.733777  5938 net.cpp:394] fc-azimuth-new <- fc7-new_drop7_0_split_0
+I0802 11:45:35.733783  5938 net.cpp:356] fc-azimuth-new -> fc-azimuth-new
+I0802 11:45:35.733789  5938 net.cpp:96] Setting up fc-azimuth-new
+I0802 11:45:35.741420  5938 net.cpp:103] Top shape: 256 180 1 1 (46080)
+I0802 11:45:35.741431  5938 layer_factory.hpp:78] Creating layer fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:35.741437  5938 net.cpp:67] Creating Layer fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:35.741442  5938 net.cpp:394] fc-azimuth-new_fc-azimuth-new_0_split <- fc-azimuth-new
+I0802 11:45:35.741462  5938 net.cpp:356] fc-azimuth-new_fc-azimuth-new_0_split -> fc-azimuth-new_fc-azimuth-new_0_split_0
+I0802 11:45:35.741494  5938 net.cpp:356] fc-azimuth-new_fc-azimuth-new_0_split -> fc-azimuth-new_fc-azimuth-new_0_split_1
+I0802 11:45:35.741502  5938 net.cpp:96] Setting up fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:35.741506  5938 net.cpp:103] Top shape: 256 180 1 1 (46080)
+I0802 11:45:35.741510  5938 net.cpp:103] Top shape: 256 180 1 1 (46080)
+I0802 11:45:35.741513  5938 layer_factory.hpp:78] Creating layer loss_azimuth-new
+I0802 11:45:35.741529  5938 net.cpp:67] Creating Layer loss_azimuth-new
+I0802 11:45:35.741533  5938 net.cpp:394] loss_azimuth-new <- fc-azimuth-new_fc-azimuth-new_0_split_0
+I0802 11:45:35.741539  5938 net.cpp:394] loss_azimuth-new <- label_azimuth_labe-slice_1_split_0
+I0802 11:45:35.741544  5938 net.cpp:356] loss_azimuth-new -> loss_azimuth-new
+I0802 11:45:35.741550  5938 net.cpp:96] Setting up loss_azimuth-new
+I0802 11:45:35.741602  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:35.741607  5938 net.cpp:109]     with loss weight 1
+I0802 11:45:35.741634  5938 layer_factory.hpp:78] Creating layer accuracy_azimuth
+I0802 11:45:35.741641  5938 net.cpp:67] Creating Layer accuracy_azimuth
+I0802 11:45:35.741644  5938 net.cpp:394] accuracy_azimuth <- fc-azimuth-new_fc-azimuth-new_0_split_1
+I0802 11:45:35.741649  5938 net.cpp:394] accuracy_azimuth <- label_azimuth_labe-slice_1_split_1
+I0802 11:45:35.741655  5938 net.cpp:356] accuracy_azimuth -> accuracy_azimuth
+I0802 11:45:35.741662  5938 net.cpp:96] Setting up accuracy_azimuth
+I0802 11:45:35.741665  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:35.741669  5938 layer_factory.hpp:78] Creating layer fc-elevation-new
+I0802 11:45:35.741686  5938 net.cpp:67] Creating Layer fc-elevation-new
+I0802 11:45:35.741690  5938 net.cpp:394] fc-elevation-new <- fc7-new_drop7_0_split_1
+I0802 11:45:35.741696  5938 net.cpp:356] fc-elevation-new -> fc-elevation-new
+I0802 11:45:35.741701  5938 net.cpp:96] Setting up fc-elevation-new
+I0802 11:45:35.755604  5938 net.cpp:103] Top shape: 256 360 1 1 (92160)
+I0802 11:45:35.755638  5938 layer_factory.hpp:78] Creating layer fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:35.755645  5938 net.cpp:67] Creating Layer fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:35.755650  5938 net.cpp:394] fc-elevation-new_fc-elevation-new_0_split <- fc-elevation-new
+I0802 11:45:35.755656  5938 net.cpp:356] fc-elevation-new_fc-elevation-new_0_split -> fc-elevation-new_fc-elevation-new_0_split_0
+I0802 11:45:35.755671  5938 net.cpp:356] fc-elevation-new_fc-elevation-new_0_split -> fc-elevation-new_fc-elevation-new_0_split_1
+I0802 11:45:35.755689  5938 net.cpp:96] Setting up fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:35.755693  5938 net.cpp:103] Top shape: 256 360 1 1 (92160)
+I0802 11:45:35.755697  5938 net.cpp:103] Top shape: 256 360 1 1 (92160)
+I0802 11:45:35.755702  5938 layer_factory.hpp:78] Creating layer loss_elevation-new
+I0802 11:45:35.755708  5938 net.cpp:67] Creating Layer loss_elevation-new
+I0802 11:45:35.755719  5938 net.cpp:394] loss_elevation-new <- fc-elevation-new_fc-elevation-new_0_split_0
+I0802 11:45:35.755724  5938 net.cpp:394] loss_elevation-new <- label_elevation_labe-slice_2_split_0
+I0802 11:45:35.755730  5938 net.cpp:356] loss_elevation-new -> loss_elevation-new
+I0802 11:45:35.755735  5938 net.cpp:96] Setting up loss_elevation-new
+I0802 11:45:35.755863  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:35.755872  5938 net.cpp:109]     with loss weight 1
+I0802 11:45:35.755879  5938 layer_factory.hpp:78] Creating layer accuracy_elevation
+I0802 11:45:35.755884  5938 net.cpp:67] Creating Layer accuracy_elevation
+I0802 11:45:35.755889  5938 net.cpp:394] accuracy_elevation <- fc-elevation-new_fc-elevation-new_0_split_1
+I0802 11:45:35.755893  5938 net.cpp:394] accuracy_elevation <- label_elevation_labe-slice_2_split_1
+I0802 11:45:35.755899  5938 net.cpp:356] accuracy_elevation -> accuracy_elevation
+I0802 11:45:35.755905  5938 net.cpp:96] Setting up accuracy_elevation
+I0802 11:45:35.755923  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:35.755928  5938 layer_factory.hpp:78] Creating layer accuracy_class
+I0802 11:45:35.755951  5938 net.cpp:67] Creating Layer accuracy_class
+I0802 11:45:35.755955  5938 net.cpp:394] accuracy_class <- label_class_labe-slice_0_split_0
+I0802 11:45:35.755960  5938 net.cpp:394] accuracy_class <- label_class_labe-slice_0_split_1
+I0802 11:45:35.755965  5938 net.cpp:356] accuracy_class -> accuracy_class
+I0802 11:45:35.755970  5938 net.cpp:96] Setting up accuracy_class
+I0802 11:45:35.755975  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:35.755980  5938 net.cpp:172] accuracy_class does not need backward computation.
+I0802 11:45:35.755982  5938 net.cpp:172] accuracy_elevation does not need backward computation.
+I0802 11:45:35.755986  5938 net.cpp:170] loss_elevation-new needs backward computation.
+I0802 11:45:35.755990  5938 net.cpp:170] fc-elevation-new_fc-elevation-new_0_split needs backward computation.
+I0802 11:45:35.755995  5938 net.cpp:170] fc-elevation-new needs backward computation.
+I0802 11:45:35.755998  5938 net.cpp:172] accuracy_azimuth does not need backward computation.
+I0802 11:45:35.756001  5938 net.cpp:170] loss_azimuth-new needs backward computation.
+I0802 11:45:35.756006  5938 net.cpp:170] fc-azimuth-new_fc-azimuth-new_0_split needs backward computation.
+I0802 11:45:35.756011  5938 net.cpp:170] fc-azimuth-new needs backward computation.
+I0802 11:45:35.756014  5938 net.cpp:170] fc7-new_drop7_0_split needs backward computation.
+I0802 11:45:35.756018  5938 net.cpp:170] drop7 needs backward computation.
+I0802 11:45:35.756022  5938 net.cpp:170] relu7 needs backward computation.
+I0802 11:45:35.756026  5938 net.cpp:170] fc7-new needs backward computation.
+I0802 11:45:35.756029  5938 net.cpp:170] drop6 needs backward computation.
+I0802 11:45:35.756033  5938 net.cpp:170] relu6 needs backward computation.
+I0802 11:45:35.756037  5938 net.cpp:170] fc6-new needs backward computation.
+I0802 11:45:35.756042  5938 net.cpp:170] pool5 needs backward computation.
+I0802 11:45:35.756045  5938 net.cpp:170] relu5 needs backward computation.
+I0802 11:45:35.756048  5938 net.cpp:170] conv5-new needs backward computation.
+I0802 11:45:35.756052  5938 net.cpp:170] relu4 needs backward computation.
+I0802 11:45:35.756057  5938 net.cpp:170] conv4-new needs backward computation.
+I0802 11:45:35.756060  5938 net.cpp:172] relu3 does not need backward computation.
+I0802 11:45:35.756064  5938 net.cpp:172] conv3 does not need backward computation.
+I0802 11:45:35.756068  5938 net.cpp:172] norm2 does not need backward computation.
+I0802 11:45:35.756072  5938 net.cpp:172] pool2 does not need backward computation.
+I0802 11:45:35.756075  5938 net.cpp:172] relu2 does not need backward computation.
+I0802 11:45:35.756079  5938 net.cpp:172] conv2 does not need backward computation.
+I0802 11:45:35.756083  5938 net.cpp:172] norm1 does not need backward computation.
+I0802 11:45:35.756088  5938 net.cpp:172] pool1 does not need backward computation.
+I0802 11:45:35.756091  5938 net.cpp:172] relu1 does not need backward computation.
+I0802 11:45:35.756094  5938 net.cpp:172] conv1 does not need backward computation.
+I0802 11:45:35.756098  5938 net.cpp:172] label_elevation_labe-slice_2_split does not need backward computation.
+I0802 11:45:35.756103  5938 net.cpp:172] label_azimuth_labe-slice_1_split does not need backward computation.
+I0802 11:45:35.756106  5938 net.cpp:172] label_class_labe-slice_0_split does not need backward computation.
+I0802 11:45:35.756110  5938 net.cpp:172] labe-slice does not need backward computation.
+I0802 11:45:35.756114  5938 net.cpp:172] label does not need backward computation.
+I0802 11:45:35.756119  5938 net.cpp:172] data does not need backward computation.
+I0802 11:45:35.756122  5938 net.cpp:208] This network produces output accuracy_azimuth
+I0802 11:45:35.756125  5938 net.cpp:208] This network produces output accuracy_class
+I0802 11:45:35.756130  5938 net.cpp:208] This network produces output accuracy_elevation
+I0802 11:45:35.756134  5938 net.cpp:208] This network produces output loss_azimuth-new
+I0802 11:45:35.756140  5938 net.cpp:208] This network produces output loss_elevation-new
+I0802 11:45:35.756188  5938 net.cpp:467] Collecting Learning Rate and Weight Decay.
+I0802 11:45:35.756202  5938 net.cpp:219] Network initialization done.
+I0802 11:45:35.756206  5938 net.cpp:220] Memory required for data: 2287763476
+I0802 11:45:35.756474  5938 solver.cpp:151] Creating test net (#0) specified by net file: /home/cad/disk/linux/RenderForCNN-master/train/train_val_engine.prototxt
+I0802 11:45:35.756505  5938 net.cpp:275] The NetState phase (1) differed from the phase (0) specified by a rule in layer data
+I0802 11:45:35.756510  5938 net.cpp:275] The NetState phase (1) differed from the phase (0) specified by a rule in layer label
+I0802 11:45:35.756656  5938 net.cpp:39] Initializing net from parameters: 
+name: "RenderForCNN"
+layers {
+  top: "data"
+  name: "data"
+  type: DATA
+  data_param {
+    source: "/home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_test_image"
+    batch_size: 64
+    backend: LMDB
+  }
+  include {
+    phase: TEST
+  }
+  transform_param {
+    mirror: false
+    mean_file: "/home/cad/disk/linux/RenderForCNN-master/train/imagenet_mean.binaryproto"
+  }
+}
+layers {
+  top: "label"
+  name: "label"
+  type: DATA
+  data_param {
+    source: "/home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_test_label"
+    batch_size: 64
+    backend: LMDB
+  }
+  include {
+    phase: TEST
+  }
+}
+layers {
+  bottom: "label"
+  top: "label_class"
+  top: "label_azimuth"
+  top: "label_elevation"
+  name: "labe-slice"
+  type: SLICE
+  slice_param {
+    slice_dim: 1
+    slice_point: 1
+    slice_point: 2
+  }
+}
+layers {
+  bottom: "data"
+  top: "conv1"
+  name: "conv1"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 96
+    kernel_size: 11
+    stride: 4
+  }
+}
+layers {
+  bottom: "conv1"
+  top: "conv1"
+  name: "relu1"
+  type: RELU
+}
+layers {
+  bottom: "conv1"
+  top: "pool1"
+  name: "pool1"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool1"
+  top: "norm1"
+  name: "norm1"
+  type: LRN
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layers {
+  bottom: "norm1"
+  top: "conv2"
+  name: "conv2"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 256
+    pad: 2
+    kernel_size: 5
+    group: 2
+  }
+}
+layers {
+  bottom: "conv2"
+  top: "conv2"
+  name: "relu2"
+  type: RELU
+}
+layers {
+  bottom: "conv2"
+  top: "pool2"
+  name: "pool2"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool2"
+  top: "norm2"
+  name: "norm2"
+  type: LRN
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layers {
+  bottom: "norm2"
+  top: "conv3"
+  name: "conv3"
+  type: CONVOLUTION
+  blobs_lr: 0
+  blobs_lr: 0
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+  }
+}
+layers {
+  bottom: "conv3"
+  top: "conv3"
+  name: "relu3"
+  type: RELU
+}
+layers {
+  bottom: "conv3"
+  top: "conv4-new"
+  name: "conv4-new"
+  type: CONVOLUTION
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+    group: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "conv4-new"
+  top: "conv4-new"
+  name: "relu4"
+  type: RELU
+}
+layers {
+  bottom: "conv4-new"
+  top: "conv5-new"
+  name: "conv5-new"
+  type: CONVOLUTION
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    group: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "conv5-new"
+  top: "conv5-new"
+  name: "relu5"
+  type: RELU
+}
+layers {
+  bottom: "conv5-new"
+  top: "pool5"
+  name: "pool5"
+  type: POOLING
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layers {
+  bottom: "pool5"
+  top: "fc6-new"
+  name: "fc6-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 4096
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc6-new"
+  name: "relu6"
+  type: RELU
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc6-new"
+  name: "drop6"
+  type: DROPOUT
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layers {
+  bottom: "fc6-new"
+  top: "fc7-new"
+  name: "fc7-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 4096
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc7-new"
+  name: "relu7"
+  type: RELU
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc7-new"
+  name: "drop7"
+  type: DROPOUT
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc-azimuth-new"
+  name: "fc-azimuth-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 180
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc-azimuth-new"
+  bottom: "label_azimuth"
+  top: "loss_azimuth-new"
+  name: "loss_azimuth-new"
+  type: SOFTMAX_WITH_VIEW_LOSS
+  loss_weight: 1
+  softmax_with_view_loss_param {
+    bandwidth: 5
+    sigma: 5
+    pos_weight: 1
+    neg_weight: 0
+    period: 180
+  }
+}
+layers {
+  bottom: "fc-azimuth-new"
+  bottom: "label_azimuth"
+  top: "accuracy_azimuth"
+  name: "accuracy_azimuth"
+  type: ACCURACY_VIEW
+  accuracy_view_param {
+    tol_angle: 3
+    period: 180
+  }
+}
+layers {
+  bottom: "fc7-new"
+  top: "fc-elevation-new"
+  name: "fc-elevation-new"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 360
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layers {
+  bottom: "fc-elevation-new"
+  bottom: "label_elevation"
+  top: "loss_elevation-new"
+  name: "loss_elevation-new"
+  type: SOFTMAX_WITH_VIEW_LOSS
+  loss_weight: 1
+  softmax_with_view_loss_param {
+    bandwidth: 5
+    sigma: 5
+    pos_weight: 1
+    neg_weight: 0
+    period: 360
+  }
+}
+layers {
+  bottom: "fc-elevation-new"
+  bottom: "label_elevation"
+  top: "accuracy_elevation"
+  name: "accuracy_elevation"
+  type: ACCURACY_VIEW
+  accuracy_view_param {
+    tol_angle: 3
+    period: 360
+  }
+}
+layers {
+  bottom: "label_class"
+  bottom: "label_class"
+  top: "accuracy_class"
+  name: "accuracy_class"
+  type: ACCURACY
+}
+state {
+  phase: TEST
+}
+I0802 11:45:35.756783  5938 layer_factory.hpp:78] Creating layer data
+I0802 11:45:35.756799  5938 data_transformer.cpp:24] Loading mean file from/home/cad/disk/linux/RenderForCNN-master/train/imagenet_mean.binaryproto
+I0802 11:45:35.757915  5938 net.cpp:67] Creating Layer data
+I0802 11:45:35.757933  5938 net.cpp:356] data -> data
+I0802 11:45:35.757948  5938 net.cpp:96] Setting up data
+I0802 11:45:35.757952  5938 data_layer.cpp:32] Opening dataset /home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_test_image
+I0802 11:45:35.758074  5938 data_layer.cpp:71] output data size: 64,3,256,256
+I0802 11:45:35.758126  5938 net.cpp:103] Top shape: 64 3 256 256 (12582912)
+I0802 11:45:35.758133  5938 layer_factory.hpp:78] Creating layer label
+I0802 11:45:35.758139  5938 net.cpp:67] Creating Layer label
+I0802 11:45:35.758144  5938 net.cpp:356] label -> label
+I0802 11:45:35.758150  5938 net.cpp:96] Setting up label
+I0802 11:45:35.758154  5938 data_layer.cpp:32] Opening dataset /home/cad/disk/linux/RenderForCNN-master/data/syn_lmdb_engine_test_label
+I0802 11:45:35.758185  5938 data_layer.cpp:71] output data size: 64,3,1,1
+I0802 11:45:35.758258  5938 net.cpp:103] Top shape: 64 3 1 1 (192)
+I0802 11:45:35.758265  5938 layer_factory.hpp:78] Creating layer labe-slice
+I0802 11:45:35.758271  5938 net.cpp:67] Creating Layer labe-slice
+I0802 11:45:35.758275  5938 net.cpp:394] labe-slice <- label
+I0802 11:45:35.758281  5938 net.cpp:356] labe-slice -> label_class
+I0802 11:45:35.758298  5938 net.cpp:356] labe-slice -> label_azimuth
+I0802 11:45:35.758309  5938 net.cpp:356] labe-slice -> label_elevation
+I0802 11:45:35.758316  5938 net.cpp:96] Setting up labe-slice
+I0802 11:45:35.758322  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758325  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758329  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758332  5938 layer_factory.hpp:78] Creating layer label_class_labe-slice_0_split
+I0802 11:45:35.758337  5938 net.cpp:67] Creating Layer label_class_labe-slice_0_split
+I0802 11:45:35.758342  5938 net.cpp:394] label_class_labe-slice_0_split <- label_class
+I0802 11:45:35.758347  5938 net.cpp:356] label_class_labe-slice_0_split -> label_class_labe-slice_0_split_0
+I0802 11:45:35.758352  5938 net.cpp:356] label_class_labe-slice_0_split -> label_class_labe-slice_0_split_1
+I0802 11:45:35.758358  5938 net.cpp:96] Setting up label_class_labe-slice_0_split
+I0802 11:45:35.758363  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758368  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758373  5938 layer_factory.hpp:78] Creating layer label_azimuth_labe-slice_1_split
+I0802 11:45:35.758378  5938 net.cpp:67] Creating Layer label_azimuth_labe-slice_1_split
+I0802 11:45:35.758381  5938 net.cpp:394] label_azimuth_labe-slice_1_split <- label_azimuth
+I0802 11:45:35.758385  5938 net.cpp:356] label_azimuth_labe-slice_1_split -> label_azimuth_labe-slice_1_split_0
+I0802 11:45:35.758391  5938 net.cpp:356] label_azimuth_labe-slice_1_split -> label_azimuth_labe-slice_1_split_1
+I0802 11:45:35.758397  5938 net.cpp:96] Setting up label_azimuth_labe-slice_1_split
+I0802 11:45:35.758401  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758405  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758409  5938 layer_factory.hpp:78] Creating layer label_elevation_labe-slice_2_split
+I0802 11:45:35.758414  5938 net.cpp:67] Creating Layer label_elevation_labe-slice_2_split
+I0802 11:45:35.758417  5938 net.cpp:394] label_elevation_labe-slice_2_split <- label_elevation
+I0802 11:45:35.758422  5938 net.cpp:356] label_elevation_labe-slice_2_split -> label_elevation_labe-slice_2_split_0
+I0802 11:45:35.758427  5938 net.cpp:356] label_elevation_labe-slice_2_split -> label_elevation_labe-slice_2_split_1
+I0802 11:45:35.758432  5938 net.cpp:96] Setting up label_elevation_labe-slice_2_split
+I0802 11:45:35.758436  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758440  5938 net.cpp:103] Top shape: 64 1 1 1 (64)
+I0802 11:45:35.758443  5938 layer_factory.hpp:78] Creating layer conv1
+I0802 11:45:35.758448  5938 net.cpp:67] Creating Layer conv1
+I0802 11:45:35.758452  5938 net.cpp:394] conv1 <- data
+I0802 11:45:35.758457  5938 net.cpp:356] conv1 -> conv1
+I0802 11:45:35.758461  5938 net.cpp:96] Setting up conv1
+I0802 11:45:35.758496  5938 net.cpp:103] Top shape: 64 96 62 62 (23617536)
+I0802 11:45:35.758512  5938 layer_factory.hpp:78] Creating layer relu1
+I0802 11:45:35.758517  5938 net.cpp:67] Creating Layer relu1
+I0802 11:45:35.758520  5938 net.cpp:394] relu1 <- conv1
+I0802 11:45:35.758525  5938 net.cpp:345] relu1 -> conv1 (in-place)
+I0802 11:45:35.758530  5938 net.cpp:96] Setting up relu1
+I0802 11:45:35.758534  5938 net.cpp:103] Top shape: 64 96 62 62 (23617536)
+I0802 11:45:35.758538  5938 layer_factory.hpp:78] Creating layer pool1
+I0802 11:45:35.758544  5938 net.cpp:67] Creating Layer pool1
+I0802 11:45:35.758548  5938 net.cpp:394] pool1 <- conv1
+I0802 11:45:35.758553  5938 net.cpp:356] pool1 -> pool1
+I0802 11:45:35.758558  5938 net.cpp:96] Setting up pool1
+I0802 11:45:35.758589  5938 net.cpp:103] Top shape: 64 96 31 31 (5904384)
+I0802 11:45:35.758594  5938 layer_factory.hpp:78] Creating layer norm1
+I0802 11:45:35.758599  5938 net.cpp:67] Creating Layer norm1
+I0802 11:45:35.758604  5938 net.cpp:394] norm1 <- pool1
+I0802 11:45:35.758638  5938 net.cpp:356] norm1 -> norm1
+I0802 11:45:35.758643  5938 net.cpp:96] Setting up norm1
+I0802 11:45:35.758648  5938 net.cpp:103] Top shape: 64 96 31 31 (5904384)
+I0802 11:45:35.758656  5938 layer_factory.hpp:78] Creating layer conv2
+I0802 11:45:35.758666  5938 net.cpp:67] Creating Layer conv2
+I0802 11:45:35.758669  5938 net.cpp:394] conv2 <- norm1
+I0802 11:45:35.758674  5938 net.cpp:356] conv2 -> conv2
+I0802 11:45:35.758680  5938 net.cpp:96] Setting up conv2
+I0802 11:45:35.758954  5938 net.cpp:103] Top shape: 64 256 31 31 (15745024)
+I0802 11:45:35.758971  5938 layer_factory.hpp:78] Creating layer relu2
+I0802 11:45:35.758988  5938 net.cpp:67] Creating Layer relu2
+I0802 11:45:35.758992  5938 net.cpp:394] relu2 <- conv2
+I0802 11:45:35.758997  5938 net.cpp:345] relu2 -> conv2 (in-place)
+I0802 11:45:35.759002  5938 net.cpp:96] Setting up relu2
+I0802 11:45:35.759006  5938 net.cpp:103] Top shape: 64 256 31 31 (15745024)
+I0802 11:45:35.759009  5938 layer_factory.hpp:78] Creating layer pool2
+I0802 11:45:35.759013  5938 net.cpp:67] Creating Layer pool2
+I0802 11:45:35.759017  5938 net.cpp:394] pool2 <- conv2
+I0802 11:45:35.759022  5938 net.cpp:356] pool2 -> pool2
+I0802 11:45:35.759027  5938 net.cpp:96] Setting up pool2
+I0802 11:45:35.759032  5938 net.cpp:103] Top shape: 64 256 15 15 (3686400)
+I0802 11:45:35.759035  5938 layer_factory.hpp:78] Creating layer norm2
+I0802 11:45:35.759040  5938 net.cpp:67] Creating Layer norm2
+I0802 11:45:35.759044  5938 net.cpp:394] norm2 <- pool2
+I0802 11:45:35.759050  5938 net.cpp:356] norm2 -> norm2
+I0802 11:45:35.759057  5938 net.cpp:96] Setting up norm2
+I0802 11:45:35.759061  5938 net.cpp:103] Top shape: 64 256 15 15 (3686400)
+I0802 11:45:35.759065  5938 layer_factory.hpp:78] Creating layer conv3
+I0802 11:45:35.759070  5938 net.cpp:67] Creating Layer conv3
+I0802 11:45:35.759075  5938 net.cpp:394] conv3 <- norm2
+I0802 11:45:35.759083  5938 net.cpp:356] conv3 -> conv3
+I0802 11:45:35.759090  5938 net.cpp:96] Setting up conv3
+I0802 11:45:35.761504  5938 net.cpp:103] Top shape: 64 384 15 15 (5529600)
+I0802 11:45:35.761525  5938 layer_factory.hpp:78] Creating layer relu3
+I0802 11:45:35.761530  5938 net.cpp:67] Creating Layer relu3
+I0802 11:45:35.761534  5938 net.cpp:394] relu3 <- conv3
+I0802 11:45:35.761539  5938 net.cpp:345] relu3 -> conv3 (in-place)
+I0802 11:45:35.761544  5938 net.cpp:96] Setting up relu3
+I0802 11:45:35.761548  5938 net.cpp:103] Top shape: 64 384 15 15 (5529600)
+I0802 11:45:35.761551  5938 layer_factory.hpp:78] Creating layer conv4-new
+I0802 11:45:35.761559  5938 net.cpp:67] Creating Layer conv4-new
+I0802 11:45:35.761562  5938 net.cpp:394] conv4-new <- conv3
+I0802 11:45:35.761569  5938 net.cpp:356] conv4-new -> conv4-new
+I0802 11:45:35.761574  5938 net.cpp:96] Setting up conv4-new
+I0802 11:45:35.768918  5938 net.cpp:103] Top shape: 64 384 15 15 (5529600)
+I0802 11:45:35.768945  5938 layer_factory.hpp:78] Creating layer relu4
+I0802 11:45:35.768954  5938 net.cpp:67] Creating Layer relu4
+I0802 11:45:35.768957  5938 net.cpp:394] relu4 <- conv4-new
+I0802 11:45:35.768972  5938 net.cpp:345] relu4 -> conv4-new (in-place)
+I0802 11:45:35.768978  5938 net.cpp:96] Setting up relu4
+I0802 11:45:35.768982  5938 net.cpp:103] Top shape: 64 384 15 15 (5529600)
+I0802 11:45:35.768986  5938 layer_factory.hpp:78] Creating layer conv5-new
+I0802 11:45:35.768992  5938 net.cpp:67] Creating Layer conv5-new
+I0802 11:45:35.768996  5938 net.cpp:394] conv5-new <- conv4-new
+I0802 11:45:35.769002  5938 net.cpp:356] conv5-new -> conv5-new
+I0802 11:45:35.769008  5938 net.cpp:96] Setting up conv5-new
+I0802 11:45:35.772923  5938 net.cpp:103] Top shape: 64 256 15 15 (3686400)
+I0802 11:45:35.772972  5938 layer_factory.hpp:78] Creating layer relu5
+I0802 11:45:35.772989  5938 net.cpp:67] Creating Layer relu5
+I0802 11:45:35.772995  5938 net.cpp:394] relu5 <- conv5-new
+I0802 11:45:35.773010  5938 net.cpp:345] relu5 -> conv5-new (in-place)
+I0802 11:45:35.773016  5938 net.cpp:96] Setting up relu5
+I0802 11:45:35.773027  5938 net.cpp:103] Top shape: 64 256 15 15 (3686400)
+I0802 11:45:35.773031  5938 layer_factory.hpp:78] Creating layer pool5
+I0802 11:45:35.773037  5938 net.cpp:67] Creating Layer pool5
+I0802 11:45:35.773041  5938 net.cpp:394] pool5 <- conv5-new
+I0802 11:45:35.773063  5938 net.cpp:356] pool5 -> pool5
+I0802 11:45:35.773078  5938 net.cpp:96] Setting up pool5
+I0802 11:45:35.773102  5938 net.cpp:103] Top shape: 64 256 7 7 (802816)
+I0802 11:45:35.773106  5938 layer_factory.hpp:78] Creating layer fc6-new
+I0802 11:45:35.773113  5938 net.cpp:67] Creating Layer fc6-new
+I0802 11:45:35.773116  5938 net.cpp:394] fc6-new <- pool5
+I0802 11:45:35.773134  5938 net.cpp:356] fc6-new -> fc6-new
+I0802 11:45:35.773140  5938 net.cpp:96] Setting up fc6-new
+I0802 11:45:36.335717  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.335767  5938 layer_factory.hpp:78] Creating layer relu6
+I0802 11:45:36.335777  5938 net.cpp:67] Creating Layer relu6
+I0802 11:45:36.335782  5938 net.cpp:394] relu6 <- fc6-new
+I0802 11:45:36.335798  5938 net.cpp:345] relu6 -> fc6-new (in-place)
+I0802 11:45:36.335813  5938 net.cpp:96] Setting up relu6
+I0802 11:45:36.335819  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.335822  5938 layer_factory.hpp:78] Creating layer drop6
+I0802 11:45:36.335829  5938 net.cpp:67] Creating Layer drop6
+I0802 11:45:36.335832  5938 net.cpp:394] drop6 <- fc6-new
+I0802 11:45:36.335839  5938 net.cpp:345] drop6 -> fc6-new (in-place)
+I0802 11:45:36.335844  5938 net.cpp:96] Setting up drop6
+I0802 11:45:36.335849  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.335851  5938 layer_factory.hpp:78] Creating layer fc7-new
+I0802 11:45:36.335857  5938 net.cpp:67] Creating Layer fc7-new
+I0802 11:45:36.335861  5938 net.cpp:394] fc7-new <- fc6-new
+I0802 11:45:36.335866  5938 net.cpp:356] fc7-new -> fc7-new
+I0802 11:45:36.335881  5938 net.cpp:96] Setting up fc7-new
+I0802 11:45:36.517061  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.517107  5938 layer_factory.hpp:78] Creating layer relu7
+I0802 11:45:36.517115  5938 net.cpp:67] Creating Layer relu7
+I0802 11:45:36.517120  5938 net.cpp:394] relu7 <- fc7-new
+I0802 11:45:36.517128  5938 net.cpp:345] relu7 -> fc7-new (in-place)
+I0802 11:45:36.517143  5938 net.cpp:96] Setting up relu7
+I0802 11:45:36.517148  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.517151  5938 layer_factory.hpp:78] Creating layer drop7
+I0802 11:45:36.517156  5938 net.cpp:67] Creating Layer drop7
+I0802 11:45:36.517160  5938 net.cpp:394] drop7 <- fc7-new
+I0802 11:45:36.517165  5938 net.cpp:345] drop7 -> fc7-new (in-place)
+I0802 11:45:36.517169  5938 net.cpp:96] Setting up drop7
+I0802 11:45:36.517174  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.517177  5938 layer_factory.hpp:78] Creating layer fc7-new_drop7_0_split
+I0802 11:45:36.517182  5938 net.cpp:67] Creating Layer fc7-new_drop7_0_split
+I0802 11:45:36.517186  5938 net.cpp:394] fc7-new_drop7_0_split <- fc7-new
+I0802 11:45:36.517191  5938 net.cpp:356] fc7-new_drop7_0_split -> fc7-new_drop7_0_split_0
+I0802 11:45:36.517199  5938 net.cpp:356] fc7-new_drop7_0_split -> fc7-new_drop7_0_split_1
+I0802 11:45:36.517211  5938 net.cpp:96] Setting up fc7-new_drop7_0_split
+I0802 11:45:36.517216  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.517220  5938 net.cpp:103] Top shape: 64 4096 1 1 (262144)
+I0802 11:45:36.517223  5938 layer_factory.hpp:78] Creating layer fc-azimuth-new
+I0802 11:45:36.517230  5938 net.cpp:67] Creating Layer fc-azimuth-new
+I0802 11:45:36.517241  5938 net.cpp:394] fc-azimuth-new <- fc7-new_drop7_0_split_0
+I0802 11:45:36.517246  5938 net.cpp:356] fc-azimuth-new -> fc-azimuth-new
+I0802 11:45:36.517252  5938 net.cpp:96] Setting up fc-azimuth-new
+I0802 11:45:36.523504  5938 net.cpp:103] Top shape: 64 180 1 1 (11520)
+I0802 11:45:36.523545  5938 layer_factory.hpp:78] Creating layer fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:36.523561  5938 net.cpp:67] Creating Layer fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:36.523566  5938 net.cpp:394] fc-azimuth-new_fc-azimuth-new_0_split <- fc-azimuth-new
+I0802 11:45:36.523582  5938 net.cpp:356] fc-azimuth-new_fc-azimuth-new_0_split -> fc-azimuth-new_fc-azimuth-new_0_split_0
+I0802 11:45:36.523598  5938 net.cpp:356] fc-azimuth-new_fc-azimuth-new_0_split -> fc-azimuth-new_fc-azimuth-new_0_split_1
+I0802 11:45:36.523620  5938 net.cpp:96] Setting up fc-azimuth-new_fc-azimuth-new_0_split
+I0802 11:45:36.523641  5938 net.cpp:103] Top shape: 64 180 1 1 (11520)
+I0802 11:45:36.523645  5938 net.cpp:103] Top shape: 64 180 1 1 (11520)
+I0802 11:45:36.523649  5938 layer_factory.hpp:78] Creating layer loss_azimuth-new
+I0802 11:45:36.523666  5938 net.cpp:67] Creating Layer loss_azimuth-new
+I0802 11:45:36.523670  5938 net.cpp:394] loss_azimuth-new <- fc-azimuth-new_fc-azimuth-new_0_split_0
+I0802 11:45:36.523675  5938 net.cpp:394] loss_azimuth-new <- label_azimuth_labe-slice_1_split_0
+I0802 11:45:36.523691  5938 net.cpp:356] loss_azimuth-new -> loss_azimuth-new
+I0802 11:45:36.523699  5938 net.cpp:96] Setting up loss_azimuth-new
+I0802 11:45:36.523736  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:36.523741  5938 net.cpp:109]     with loss weight 1
+I0802 11:45:36.523763  5938 layer_factory.hpp:78] Creating layer accuracy_azimuth
+I0802 11:45:36.523769  5938 net.cpp:67] Creating Layer accuracy_azimuth
+I0802 11:45:36.523773  5938 net.cpp:394] accuracy_azimuth <- fc-azimuth-new_fc-azimuth-new_0_split_1
+I0802 11:45:36.523778  5938 net.cpp:394] accuracy_azimuth <- label_azimuth_labe-slice_1_split_1
+I0802 11:45:36.523784  5938 net.cpp:356] accuracy_azimuth -> accuracy_azimuth
+I0802 11:45:36.523790  5938 net.cpp:96] Setting up accuracy_azimuth
+I0802 11:45:36.523794  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:36.523798  5938 layer_factory.hpp:78] Creating layer fc-elevation-new
+I0802 11:45:36.523818  5938 net.cpp:67] Creating Layer fc-elevation-new
+I0802 11:45:36.523823  5938 net.cpp:394] fc-elevation-new <- fc7-new_drop7_0_split_1
+I0802 11:45:36.523828  5938 net.cpp:356] fc-elevation-new -> fc-elevation-new
+I0802 11:45:36.523834  5938 net.cpp:96] Setting up fc-elevation-new
+I0802 11:45:36.537618  5938 net.cpp:103] Top shape: 64 360 1 1 (23040)
+I0802 11:45:36.537664  5938 layer_factory.hpp:78] Creating layer fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:36.537674  5938 net.cpp:67] Creating Layer fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:36.537679  5938 net.cpp:394] fc-elevation-new_fc-elevation-new_0_split <- fc-elevation-new
+I0802 11:45:36.537686  5938 net.cpp:356] fc-elevation-new_fc-elevation-new_0_split -> fc-elevation-new_fc-elevation-new_0_split_0
+I0802 11:45:36.537703  5938 net.cpp:356] fc-elevation-new_fc-elevation-new_0_split -> fc-elevation-new_fc-elevation-new_0_split_1
+I0802 11:45:36.537714  5938 net.cpp:96] Setting up fc-elevation-new_fc-elevation-new_0_split
+I0802 11:45:36.537719  5938 net.cpp:103] Top shape: 64 360 1 1 (23040)
+I0802 11:45:36.537722  5938 net.cpp:103] Top shape: 64 360 1 1 (23040)
+I0802 11:45:36.537726  5938 layer_factory.hpp:78] Creating layer loss_elevation-new
+I0802 11:45:36.537741  5938 net.cpp:67] Creating Layer loss_elevation-new
+I0802 11:45:36.537745  5938 net.cpp:394] loss_elevation-new <- fc-elevation-new_fc-elevation-new_0_split_0
+I0802 11:45:36.537750  5938 net.cpp:394] loss_elevation-new <- label_elevation_labe-slice_2_split_0
+I0802 11:45:36.537756  5938 net.cpp:356] loss_elevation-new -> loss_elevation-new
+I0802 11:45:36.537770  5938 net.cpp:96] Setting up loss_elevation-new
+I0802 11:45:36.537809  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:36.537813  5938 net.cpp:109]     with loss weight 1
+I0802 11:45:36.537825  5938 layer_factory.hpp:78] Creating layer accuracy_elevation
+I0802 11:45:36.537832  5938 net.cpp:67] Creating Layer accuracy_elevation
+I0802 11:45:36.537835  5938 net.cpp:394] accuracy_elevation <- fc-elevation-new_fc-elevation-new_0_split_1
+I0802 11:45:36.537839  5938 net.cpp:394] accuracy_elevation <- label_elevation_labe-slice_2_split_1
+I0802 11:45:36.537847  5938 net.cpp:356] accuracy_elevation -> accuracy_elevation
+I0802 11:45:36.537859  5938 net.cpp:96] Setting up accuracy_elevation
+I0802 11:45:36.537864  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:36.537868  5938 layer_factory.hpp:78] Creating layer accuracy_class
+I0802 11:45:36.537873  5938 net.cpp:67] Creating Layer accuracy_class
+I0802 11:45:36.537878  5938 net.cpp:394] accuracy_class <- label_class_labe-slice_0_split_0
+I0802 11:45:36.537904  5938 net.cpp:394] accuracy_class <- label_class_labe-slice_0_split_1
+I0802 11:45:36.537910  5938 net.cpp:356] accuracy_class -> accuracy_class
+I0802 11:45:36.537916  5938 net.cpp:96] Setting up accuracy_class
+I0802 11:45:36.537928  5938 net.cpp:103] Top shape: 1 1 1 1 (1)
+I0802 11:45:36.537932  5938 net.cpp:172] accuracy_class does not need backward computation.
+I0802 11:45:36.537936  5938 net.cpp:172] accuracy_elevation does not need backward computation.
+I0802 11:45:36.537940  5938 net.cpp:170] loss_elevation-new needs backward computation.
+I0802 11:45:36.537943  5938 net.cpp:170] fc-elevation-new_fc-elevation-new_0_split needs backward computation.
+I0802 11:45:36.537947  5938 net.cpp:170] fc-elevation-new needs backward computation.
+I0802 11:45:36.537951  5938 net.cpp:172] accuracy_azimuth does not need backward computation.
+I0802 11:45:36.537955  5938 net.cpp:170] loss_azimuth-new needs backward computation.
+I0802 11:45:36.537959  5938 net.cpp:170] fc-azimuth-new_fc-azimuth-new_0_split needs backward computation.
+I0802 11:45:36.537963  5938 net.cpp:170] fc-azimuth-new needs backward computation.
+I0802 11:45:36.537967  5938 net.cpp:170] fc7-new_drop7_0_split needs backward computation.
+I0802 11:45:36.537971  5938 net.cpp:170] drop7 needs backward computation.
+I0802 11:45:36.537976  5938 net.cpp:170] relu7 needs backward computation.
+I0802 11:45:36.537979  5938 net.cpp:170] fc7-new needs backward computation.
+I0802 11:45:36.537983  5938 net.cpp:170] drop6 needs backward computation.
+I0802 11:45:36.537986  5938 net.cpp:170] relu6 needs backward computation.
+I0802 11:45:36.537991  5938 net.cpp:170] fc6-new needs backward computation.
+I0802 11:45:36.537994  5938 net.cpp:170] pool5 needs backward computation.
+I0802 11:45:36.537998  5938 net.cpp:170] relu5 needs backward computation.
+I0802 11:45:36.538002  5938 net.cpp:170] conv5-new needs backward computation.
+I0802 11:45:36.538007  5938 net.cpp:170] relu4 needs backward computation.
+I0802 11:45:36.538009  5938 net.cpp:170] conv4-new needs backward computation.
+I0802 11:45:36.538013  5938 net.cpp:172] relu3 does not need backward computation.
+I0802 11:45:36.538017  5938 net.cpp:172] conv3 does not need backward computation.
+I0802 11:45:36.538022  5938 net.cpp:172] norm2 does not need backward computation.
+I0802 11:45:36.538025  5938 net.cpp:172] pool2 does not need backward computation.
+I0802 11:45:36.538028  5938 net.cpp:172] relu2 does not need backward computation.
+I0802 11:45:36.538033  5938 net.cpp:172] conv2 does not need backward computation.
+I0802 11:45:36.538036  5938 net.cpp:172] norm1 does not need backward computation.
+I0802 11:45:36.538040  5938 net.cpp:172] pool1 does not need backward computation.
+I0802 11:45:36.538043  5938 net.cpp:172] relu1 does not need backward computation.
+I0802 11:45:36.538048  5938 net.cpp:172] conv1 does not need backward computation.
+I0802 11:45:36.538051  5938 net.cpp:172] label_elevation_labe-slice_2_split does not need backward computation.
+I0802 11:45:36.538055  5938 net.cpp:172] label_azimuth_labe-slice_1_split does not need backward computation.
+I0802 11:45:36.538059  5938 net.cpp:172] label_class_labe-slice_0_split does not need backward computation.
+I0802 11:45:36.538064  5938 net.cpp:172] labe-slice does not need backward computation.
+I0802 11:45:36.538066  5938 net.cpp:172] label does not need backward computation.
+I0802 11:45:36.538070  5938 net.cpp:172] data does not need backward computation.
+I0802 11:45:36.538074  5938 net.cpp:208] This network produces output accuracy_azimuth
+I0802 11:45:36.538077  5938 net.cpp:208] This network produces output accuracy_class
+I0802 11:45:36.538081  5938 net.cpp:208] This network produces output accuracy_elevation
+I0802 11:45:36.538085  5938 net.cpp:208] This network produces output loss_azimuth-new
+I0802 11:45:36.538089  5938 net.cpp:208] This network produces output loss_elevation-new
+I0802 11:45:36.538121  5938 net.cpp:467] Collecting Learning Rate and Weight Decay.
+I0802 11:45:36.538136  5938 net.cpp:219] Network initialization done.
+I0802 11:45:36.538141  5938 net.cpp:220] Memory required for data: 571940884
+I0802 11:45:36.538223  5938 solver.cpp:41] Solver scaffolding done.
+I0802 11:45:36.538228  5938 caffe.cpp:115] Finetuning from /home/cad/disk/linux/RenderForCNN-master/caffe_models/render4cnn_3dview.caffemodel
+I0802 11:45:37.020392  5938 solver.cpp:160] Solving RenderForCNN
+I0802 11:45:37.020422  5938 solver.cpp:161] Learning Rate Policy: step
+I0802 11:45:37.020458  5938 solver.cpp:264] Iteration 0, Testing net (#0)
+I0802 11:45:43.875361  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.035625
+I0802 11:45:43.875432  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:45:43.875438  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.0146875
+I0802 11:45:43.875455  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 35.4871 (* 1 = 35.4871 loss)
+I0802 11:45:43.875463  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 40.2717 (* 1 = 40.2717 loss)
+I0802 11:45:44.235662  5938 solver.cpp:209] Iteration 0, loss = 80.9456
+I0802 11:45:44.235704  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.03125
+I0802 11:45:44.235713  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:45:44.235719  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.015625
+I0802 11:45:44.235728  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 38.0693 (* 1 = 38.0693 loss)
+I0802 11:45:44.235735  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 42.8763 (* 1 = 42.8763 loss)
+I0802 11:45:44.235749  5938 solver.cpp:445] Iteration 0, lr = 0.001
+I0802 11:46:04.140264  5938 solver.cpp:209] Iteration 50, loss = 69.9401
+I0802 11:46:04.140326  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.203125
+I0802 11:46:04.140334  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:46:04.140341  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.0429688
+I0802 11:46:04.140377  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 30.217 (* 1 = 30.217 loss)
+I0802 11:46:04.140383  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 39.723 (* 1 = 39.723 loss)
+I0802 11:46:04.140391  5938 solver.cpp:445] Iteration 50, lr = 0.001
+I0802 11:46:23.787883  5938 solver.cpp:209] Iteration 100, loss = 61.5912
+I0802 11:46:23.787987  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.273438
+I0802 11:46:23.788007  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:46:23.788012  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.152344
+I0802 11:46:23.788020  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 28.3219 (* 1 = 28.3219 loss)
+I0802 11:46:23.788028  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 33.2693 (* 1 = 33.2693 loss)
+I0802 11:46:23.788036  5938 solver.cpp:445] Iteration 100, lr = 0.001
+I0802 11:46:43.417065  5938 solver.cpp:209] Iteration 150, loss = 49.0607
+I0802 11:46:43.417122  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.492188
+I0802 11:46:43.417131  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:46:43.417137  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.554688
+I0802 11:46:43.417162  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 24.5178 (* 1 = 24.5178 loss)
+I0802 11:46:43.417170  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 24.5429 (* 1 = 24.5429 loss)
+I0802 11:46:43.417176  5938 solver.cpp:445] Iteration 150, lr = 0.001
+I0802 11:47:02.943145  5938 solver.cpp:264] Iteration 200, Testing net (#0)
+I0802 11:47:09.842219  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.654531
+I0802 11:47:09.842288  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:47:09.842296  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.794844
+I0802 11:47:09.842313  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 20.9898 (* 1 = 20.9898 loss)
+I0802 11:47:09.842339  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 20.6267 (* 1 = 20.6267 loss)
+I0802 11:47:10.182878  5938 solver.cpp:209] Iteration 200, loss = 43.7371
+I0802 11:47:10.182934  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.664062
+I0802 11:47:10.182941  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:47:10.182946  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.617188
+I0802 11:47:10.182962  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 21.5778 (* 1 = 21.5778 loss)
+I0802 11:47:10.182970  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 22.1594 (* 1 = 22.1594 loss)
+I0802 11:47:10.182976  5938 solver.cpp:445] Iteration 200, lr = 0.001
+I0802 11:47:30.308151  5938 solver.cpp:209] Iteration 250, loss = 44.246
+I0802 11:47:30.308219  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.636719
+I0802 11:47:30.308228  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:47:30.308233  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.578125
+I0802 11:47:30.308250  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 21.8074 (* 1 = 21.8074 loss)
+I0802 11:47:30.308256  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 22.4386 (* 1 = 22.4386 loss)
+I0802 11:47:30.308264  5938 solver.cpp:445] Iteration 250, lr = 0.001
+I0802 11:47:49.923013  5938 solver.cpp:209] Iteration 300, loss = 40.1088
+I0802 11:47:49.923238  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.714844
+I0802 11:47:49.923254  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:47:49.923259  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.707031
+I0802 11:47:49.923276  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 19.7854 (* 1 = 19.7854 loss)
+I0802 11:47:49.923282  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 20.3234 (* 1 = 20.3234 loss)
+I0802 11:47:49.923290  5938 solver.cpp:445] Iteration 300, lr = 0.001
+I0802 11:48:09.811558  5938 solver.cpp:209] Iteration 350, loss = 38.0676
+I0802 11:48:09.811621  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.800781
+I0802 11:48:09.811630  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:48:09.811635  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.84375
+I0802 11:48:09.811652  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 19.17 (* 1 = 19.17 loss)
+I0802 11:48:09.811659  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.8976 (* 1 = 18.8976 loss)
+I0802 11:48:09.811674  5938 solver.cpp:445] Iteration 350, lr = 0.001
+I0802 11:48:29.689851  5938 solver.cpp:264] Iteration 400, Testing net (#0)
+I0802 11:48:36.451370  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.826406
+I0802 11:48:36.451427  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:48:36.451434  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.91875
+I0802 11:48:36.451444  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 18.5895 (* 1 = 18.5895 loss)
+I0802 11:48:36.451452  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 17.6371 (* 1 = 17.6371 loss)
+I0802 11:48:36.795018  5938 solver.cpp:209] Iteration 400, loss = 37.8927
+I0802 11:48:36.795059  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.816406
+I0802 11:48:36.795068  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:48:36.795073  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.824219
+I0802 11:48:36.795081  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 19.0359 (* 1 = 19.0359 loss)
+I0802 11:48:36.795089  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.8567 (* 1 = 18.8567 loss)
+I0802 11:48:36.795096  5938 solver.cpp:445] Iteration 400, lr = 0.001
+I0802 11:48:57.038286  5938 solver.cpp:209] Iteration 450, loss = 37.5639
+I0802 11:48:57.038353  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.761719
+I0802 11:48:57.038360  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:48:57.038367  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.878906
+I0802 11:48:57.038383  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 19.3177 (* 1 = 19.3177 loss)
+I0802 11:48:57.038389  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.2463 (* 1 = 18.2463 loss)
+I0802 11:48:57.038395  5938 solver.cpp:445] Iteration 450, lr = 0.001
+I0802 11:49:16.688202  5938 solver.cpp:209] Iteration 500, loss = 36.309
+I0802 11:49:16.688439  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.789062
+I0802 11:49:16.688457  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:49:16.688463  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.90625
+I0802 11:49:16.688480  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 18.3108 (* 1 = 18.3108 loss)
+I0802 11:49:16.688488  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.9983 (* 1 = 17.9983 loss)
+I0802 11:49:16.688493  5938 solver.cpp:445] Iteration 500, lr = 0.001
+I0802 11:49:36.610298  5938 solver.cpp:209] Iteration 550, loss = 36.5632
+I0802 11:49:36.610352  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.878906
+I0802 11:49:36.610360  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:49:36.610365  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.890625
+I0802 11:49:36.610383  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 18.4075 (* 1 = 18.4075 loss)
+I0802 11:49:36.610389  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.1557 (* 1 = 18.1557 loss)
+I0802 11:49:36.610396  5938 solver.cpp:445] Iteration 550, lr = 0.001
+I0802 11:49:55.899235  5938 solver.cpp:264] Iteration 600, Testing net (#0)
+I0802 11:50:02.619724  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.816094
+I0802 11:50:02.619794  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:50:02.619801  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.9525
+I0802 11:50:02.619810  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 18.4728 (* 1 = 18.4728 loss)
+I0802 11:50:02.619817  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 17.3406 (* 1 = 17.3406 loss)
+I0802 11:50:02.953577  5938 solver.cpp:209] Iteration 600, loss = 36.8602
+I0802 11:50:02.953634  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.773438
+I0802 11:50:02.953642  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:50:02.953647  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.886719
+I0802 11:50:02.953665  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 18.8014 (* 1 = 18.8014 loss)
+I0802 11:50:02.953671  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.0588 (* 1 = 18.0588 loss)
+I0802 11:50:02.953677  5938 solver.cpp:445] Iteration 600, lr = 0.00033
+I0802 11:50:22.639350  5938 solver.cpp:209] Iteration 650, loss = 36.2274
+I0802 11:50:22.639418  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.859375
+I0802 11:50:22.639427  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:50:22.639432  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.886719
+I0802 11:50:22.639448  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 18.14 (* 1 = 18.14 loss)
+I0802 11:50:22.639456  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.0874 (* 1 = 18.0874 loss)
+I0802 11:50:22.639463  5938 solver.cpp:445] Iteration 650, lr = 0.00033
+I0802 11:50:42.318756  5938 solver.cpp:209] Iteration 700, loss = 35.735
+I0802 11:50:42.319000  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.886719
+I0802 11:50:42.319021  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:50:42.319027  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.886719
+I0802 11:50:42.319043  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.9074 (* 1 = 17.9074 loss)
+I0802 11:50:42.319051  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.8276 (* 1 = 17.8276 loss)
+I0802 11:50:42.319057  5938 solver.cpp:445] Iteration 700, lr = 0.00033
+I0802 11:51:02.025876  5938 solver.cpp:209] Iteration 750, loss = 36.2082
+I0802 11:51:02.025934  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.820312
+I0802 11:51:02.025943  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:51:02.025948  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 11:51:02.025964  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 18.4302 (* 1 = 18.4302 loss)
+I0802 11:51:02.025971  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.778 (* 1 = 17.778 loss)
+I0802 11:51:02.025977  5938 solver.cpp:445] Iteration 750, lr = 0.00033
+I0802 11:51:21.316634  5938 solver.cpp:264] Iteration 800, Testing net (#0)
+I0802 11:51:28.054733  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.931719
+I0802 11:51:28.054785  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:51:28.054792  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.993906
+I0802 11:51:28.054801  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 17.4687 (* 1 = 17.4687 loss)
+I0802 11:51:28.054807  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.878 (* 1 = 16.878 loss)
+I0802 11:51:28.386912  5938 solver.cpp:209] Iteration 800, loss = 35.9785
+I0802 11:51:28.386970  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.90625
+I0802 11:51:28.386978  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:51:28.386983  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.886719
+I0802 11:51:28.387001  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.9377 (* 1 = 17.9377 loss)
+I0802 11:51:28.387006  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 18.0408 (* 1 = 18.0408 loss)
+I0802 11:51:28.387013  5938 solver.cpp:445] Iteration 800, lr = 0.00033
+I0802 11:51:48.088925  5938 solver.cpp:209] Iteration 850, loss = 35.676
+I0802 11:51:48.088982  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.898438
+I0802 11:51:48.088990  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:51:48.088996  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.914062
+I0802 11:51:48.089012  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.9638 (* 1 = 17.9638 loss)
+I0802 11:51:48.089020  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.7122 (* 1 = 17.7122 loss)
+I0802 11:51:48.089026  5938 solver.cpp:445] Iteration 850, lr = 0.00033
+I0802 11:52:07.797467  5938 solver.cpp:209] Iteration 900, loss = 35.1087
+I0802 11:52:07.797600  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.933594
+I0802 11:52:07.797610  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:52:07.797616  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.941406
+I0802 11:52:07.797632  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.6058 (* 1 = 17.6058 loss)
+I0802 11:52:07.797639  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.5029 (* 1 = 17.5029 loss)
+I0802 11:52:07.797646  5938 solver.cpp:445] Iteration 900, lr = 0.00033
+I0802 11:52:27.483250  5938 solver.cpp:209] Iteration 950, loss = 35.1076
+I0802 11:52:27.483325  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.90625
+I0802 11:52:27.483333  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:52:27.483338  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.917969
+I0802 11:52:27.483362  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.6678 (* 1 = 17.6678 loss)
+I0802 11:52:27.483369  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.4398 (* 1 = 17.4398 loss)
+I0802 11:52:27.483384  5938 solver.cpp:445] Iteration 950, lr = 0.00033
+I0802 11:52:47.373548  5938 solver.cpp:334] Snapshotting to snapshots_iter_1000.caffemodel
+I0802 11:52:49.434890  5938 solver.cpp:342] Snapshotting solver state to snapshots_iter_1000.solverstate
+I0802 11:52:50.502058  5938 solver.cpp:264] Iteration 1000, Testing net (#0)
+I0802 11:52:57.164247  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.922031
+I0802 11:52:57.164314  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:52:57.164321  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.988281
+I0802 11:52:57.164338  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 17.551 (* 1 = 17.551 loss)
+I0802 11:52:57.164345  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.9996 (* 1 = 16.9996 loss)
+I0802 11:52:57.496047  5938 solver.cpp:209] Iteration 1000, loss = 35.1764
+I0802 11:52:57.496100  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.871094
+I0802 11:52:57.496109  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:52:57.496114  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.925781
+I0802 11:52:57.496130  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.6702 (* 1 = 17.6702 loss)
+I0802 11:52:57.496137  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.5062 (* 1 = 17.5062 loss)
+I0802 11:52:57.496143  5938 solver.cpp:445] Iteration 1000, lr = 0.00033
+I0802 11:53:17.106026  5938 solver.cpp:209] Iteration 1050, loss = 34.851
+I0802 11:53:17.106096  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.917969
+I0802 11:53:17.106106  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:53:17.106111  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.960938
+I0802 11:53:17.106127  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.4514 (* 1 = 17.4514 loss)
+I0802 11:53:17.106133  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3997 (* 1 = 17.3997 loss)
+I0802 11:53:17.106140  5938 solver.cpp:445] Iteration 1050, lr = 0.00033
+I0802 11:53:36.713181  5938 solver.cpp:209] Iteration 1100, loss = 34.7026
+I0802 11:53:36.713330  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.957031
+I0802 11:53:36.713340  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:53:36.713346  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.953125
+I0802 11:53:36.713354  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3871 (* 1 = 17.3871 loss)
+I0802 11:53:36.713361  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3155 (* 1 = 17.3155 loss)
+I0802 11:53:36.713368  5938 solver.cpp:445] Iteration 1100, lr = 0.00033
+I0802 11:53:56.432093  5938 solver.cpp:209] Iteration 1150, loss = 35.5625
+I0802 11:53:56.432163  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.910156
+I0802 11:53:56.432173  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:53:56.432178  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.894531
+I0802 11:53:56.432195  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.8551 (* 1 = 17.8551 loss)
+I0802 11:53:56.432201  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.7073 (* 1 = 17.7073 loss)
+I0802 11:53:56.432209  5938 solver.cpp:445] Iteration 1150, lr = 0.00033
+I0802 11:54:15.807379  5938 solver.cpp:264] Iteration 1200, Testing net (#0)
+I0802 11:54:22.542757  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.952812
+I0802 11:54:22.542824  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:54:22.542832  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.992031
+I0802 11:54:22.542860  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 17.3985 (* 1 = 17.3985 loss)
+I0802 11:54:22.542866  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.9437 (* 1 = 16.9437 loss)
+I0802 11:54:22.876860  5938 solver.cpp:209] Iteration 1200, loss = 34.8618
+I0802 11:54:22.876911  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.941406
+I0802 11:54:22.876919  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:54:22.876924  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.929688
+I0802 11:54:22.876940  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3898 (* 1 = 17.3898 loss)
+I0802 11:54:22.876947  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.472 (* 1 = 17.472 loss)
+I0802 11:54:22.876955  5938 solver.cpp:445] Iteration 1200, lr = 0.0001089
+I0802 11:54:42.645933  5938 solver.cpp:209] Iteration 1250, loss = 35.0579
+I0802 11:54:42.645988  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.894531
+I0802 11:54:42.646005  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:54:42.646010  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.953125
+I0802 11:54:42.646026  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.6632 (* 1 = 17.6632 loss)
+I0802 11:54:42.646034  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3947 (* 1 = 17.3947 loss)
+I0802 11:54:42.646039  5938 solver.cpp:445] Iteration 1250, lr = 0.0001089
+I0802 11:55:02.368458  5938 solver.cpp:209] Iteration 1300, loss = 34.7226
+I0802 11:55:02.368692  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.945312
+I0802 11:55:02.368702  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:55:02.368708  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.945312
+I0802 11:55:02.368726  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.4093 (* 1 = 17.4093 loss)
+I0802 11:55:02.368733  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3133 (* 1 = 17.3133 loss)
+I0802 11:55:02.368741  5938 solver.cpp:445] Iteration 1300, lr = 0.0001089
+I0802 11:55:22.101375  5938 solver.cpp:209] Iteration 1350, loss = 35.2216
+I0802 11:55:22.101444  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.917969
+I0802 11:55:22.101460  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:55:22.101466  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.890625
+I0802 11:55:22.101483  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.5257 (* 1 = 17.5257 loss)
+I0802 11:55:22.101490  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.6959 (* 1 = 17.6959 loss)
+I0802 11:55:22.101497  5938 solver.cpp:445] Iteration 1350, lr = 0.0001089
+I0802 11:55:41.442193  5938 solver.cpp:264] Iteration 1400, Testing net (#0)
+I0802 11:55:48.189422  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.983281
+I0802 11:55:48.189491  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:55:48.189498  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.998125
+I0802 11:55:48.189508  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.9653 (* 1 = 16.9653 loss)
+I0802 11:55:48.189522  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.622 (* 1 = 16.622 loss)
+I0802 11:55:48.522873  5938 solver.cpp:209] Iteration 1400, loss = 34.5026
+I0802 11:55:48.522927  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.953125
+I0802 11:55:48.522934  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:55:48.522940  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.925781
+I0802 11:55:48.522956  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2964 (* 1 = 17.2964 loss)
+I0802 11:55:48.522963  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2062 (* 1 = 17.2062 loss)
+I0802 11:55:48.522984  5938 solver.cpp:445] Iteration 1400, lr = 0.0001089
+I0802 11:56:08.279441  5938 solver.cpp:209] Iteration 1450, loss = 34.5381
+I0802 11:56:08.279510  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.964844
+I0802 11:56:08.279517  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:56:08.279522  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.96875
+I0802 11:56:08.279531  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.278 (* 1 = 17.278 loss)
+I0802 11:56:08.279537  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2602 (* 1 = 17.2602 loss)
+I0802 11:56:08.279544  5938 solver.cpp:445] Iteration 1450, lr = 0.0001089
+I0802 11:56:28.019944  5938 solver.cpp:209] Iteration 1500, loss = 34.6183
+I0802 11:56:28.020160  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.964844
+I0802 11:56:28.020170  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:56:28.020176  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.949219
+I0802 11:56:28.020192  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.372 (* 1 = 17.372 loss)
+I0802 11:56:28.020200  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2463 (* 1 = 17.2463 loss)
+I0802 11:56:28.020206  5938 solver.cpp:445] Iteration 1500, lr = 0.0001089
+I0802 11:56:47.779855  5938 solver.cpp:209] Iteration 1550, loss = 34.6621
+I0802 11:56:47.779919  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.957031
+I0802 11:56:47.779935  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:56:47.779940  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.96875
+I0802 11:56:47.779958  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3562 (* 1 = 17.3562 loss)
+I0802 11:56:47.779965  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3059 (* 1 = 17.3059 loss)
+I0802 11:56:47.779973  5938 solver.cpp:445] Iteration 1550, lr = 0.0001089
+I0802 11:57:07.139972  5938 solver.cpp:264] Iteration 1600, Testing net (#0)
+I0802 11:57:13.885820  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.988281
+I0802 11:57:13.885888  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:57:13.885895  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.997656
+I0802 11:57:13.885911  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.8775 (* 1 = 16.8775 loss)
+I0802 11:57:13.885918  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.6077 (* 1 = 16.6077 loss)
+I0802 11:57:14.217877  5938 solver.cpp:209] Iteration 1600, loss = 34.6523
+I0802 11:57:14.217933  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.941406
+I0802 11:57:14.217941  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:57:14.217947  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 11:57:14.217955  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3048 (* 1 = 17.3048 loss)
+I0802 11:57:14.217962  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3474 (* 1 = 17.3474 loss)
+I0802 11:57:14.217968  5938 solver.cpp:445] Iteration 1600, lr = 0.0001089
+I0802 11:57:33.964563  5938 solver.cpp:209] Iteration 1650, loss = 34.3799
+I0802 11:57:33.964630  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.964844
+I0802 11:57:33.964638  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:57:33.964643  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.972656
+I0802 11:57:33.964659  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2274 (* 1 = 17.2274 loss)
+I0802 11:57:33.964666  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1524 (* 1 = 17.1524 loss)
+I0802 11:57:33.964673  5938 solver.cpp:445] Iteration 1650, lr = 0.0001089
+I0802 11:57:53.704093  5938 solver.cpp:209] Iteration 1700, loss = 34.7749
+I0802 11:57:53.704339  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.933594
+I0802 11:57:53.704358  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:57:53.704363  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.925781
+I0802 11:57:53.704380  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.4245 (* 1 = 17.4245 loss)
+I0802 11:57:53.704386  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.3505 (* 1 = 17.3505 loss)
+I0802 11:57:53.704393  5938 solver.cpp:445] Iteration 1700, lr = 0.0001089
+I0802 11:58:13.450723  5938 solver.cpp:209] Iteration 1750, loss = 34.4313
+I0802 11:58:13.450788  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.953125
+I0802 11:58:13.450796  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:58:13.450801  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.945312
+I0802 11:58:13.450817  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1561 (* 1 = 17.1561 loss)
+I0802 11:58:13.450824  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2751 (* 1 = 17.2751 loss)
+I0802 11:58:13.450831  5938 solver.cpp:445] Iteration 1750, lr = 0.0001089
+I0802 11:58:32.818660  5938 solver.cpp:264] Iteration 1800, Testing net (#0)
+I0802 11:58:39.542634  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.975156
+I0802 11:58:39.542696  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 11:58:39.542703  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.99875
+I0802 11:58:39.542713  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.9974 (* 1 = 16.9974 loss)
+I0802 11:58:39.542721  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5818 (* 1 = 16.5818 loss)
+I0802 11:58:39.877424  5938 solver.cpp:209] Iteration 1800, loss = 34.5302
+I0802 11:58:39.877481  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.960938
+I0802 11:58:39.877490  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:58:39.877496  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.972656
+I0802 11:58:39.877511  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2883 (* 1 = 17.2883 loss)
+I0802 11:58:39.877518  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.242 (* 1 = 17.242 loss)
+I0802 11:58:39.877534  5938 solver.cpp:445] Iteration 1800, lr = 3.5937e-05
+I0802 11:58:59.649689  5938 solver.cpp:209] Iteration 1850, loss = 34.5237
+I0802 11:58:59.649760  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.945312
+I0802 11:58:59.649776  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:58:59.649781  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.96875
+I0802 11:58:59.649798  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3665 (* 1 = 17.3665 loss)
+I0802 11:58:59.649806  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1573 (* 1 = 17.1573 loss)
+I0802 11:58:59.649813  5938 solver.cpp:445] Iteration 1850, lr = 3.5937e-05
+I0802 11:59:19.796861  5938 solver.cpp:209] Iteration 1900, loss = 34.9154
+I0802 11:59:19.796990  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.941406
+I0802 11:59:19.797000  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:59:19.797005  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.9375
+I0802 11:59:19.797022  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.4159 (* 1 = 17.4159 loss)
+I0802 11:59:19.797029  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.4995 (* 1 = 17.4995 loss)
+I0802 11:59:19.797036  5938 solver.cpp:445] Iteration 1900, lr = 3.5937e-05
+I0802 11:59:39.395650  5938 solver.cpp:209] Iteration 1950, loss = 34.4503
+I0802 11:59:39.395712  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.921875
+I0802 11:59:39.395720  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 11:59:39.395745  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 11:59:39.395761  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3376 (* 1 = 17.3376 loss)
+I0802 11:59:39.395768  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1127 (* 1 = 17.1127 loss)
+I0802 11:59:39.395776  5938 solver.cpp:445] Iteration 1950, lr = 3.5937e-05
+I0802 11:59:58.964433  5938 solver.cpp:334] Snapshotting to snapshots_iter_2000.caffemodel
+I0802 12:00:00.996914  5938 solver.cpp:342] Snapshotting solver state to snapshots_iter_2000.solverstate
+I0802 12:00:02.457859  5938 solver.cpp:264] Iteration 2000, Testing net (#0)
+I0802 12:00:09.102023  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.990313
+I0802 12:00:09.102085  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:00:09.102092  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 1
+I0802 12:00:09.102102  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.8427 (* 1 = 16.8427 loss)
+I0802 12:00:09.102109  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5736 (* 1 = 16.5736 loss)
+I0802 12:00:09.431742  5938 solver.cpp:209] Iteration 2000, loss = 34.3793
+I0802 12:00:09.431792  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.9375
+I0802 12:00:09.431799  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:00:09.431804  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.976562
+I0802 12:00:09.431821  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2287 (* 1 = 17.2287 loss)
+I0802 12:00:09.431828  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1507 (* 1 = 17.1507 loss)
+I0802 12:00:09.431835  5938 solver.cpp:445] Iteration 2000, lr = 3.5937e-05
+I0802 12:00:28.908679  5938 solver.cpp:209] Iteration 2050, loss = 34.5464
+I0802 12:00:28.908733  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.960938
+I0802 12:00:28.908741  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:00:28.908746  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.941406
+I0802 12:00:28.908763  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.275 (* 1 = 17.275 loss)
+I0802 12:00:28.908771  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2714 (* 1 = 17.2714 loss)
+I0802 12:00:28.908777  5938 solver.cpp:445] Iteration 2050, lr = 3.5937e-05
+I0802 12:00:48.449887  5938 solver.cpp:209] Iteration 2100, loss = 34.5312
+I0802 12:00:48.450034  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.929688
+I0802 12:00:48.450045  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:00:48.450050  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 12:00:48.450058  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3892 (* 1 = 17.3892 loss)
+I0802 12:00:48.450065  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.142 (* 1 = 17.142 loss)
+I0802 12:00:48.450083  5938 solver.cpp:445] Iteration 2100, lr = 3.5937e-05
+I0802 12:01:08.060838  5938 solver.cpp:209] Iteration 2150, loss = 34.4123
+I0802 12:01:08.060885  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.953125
+I0802 12:01:08.060894  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:01:08.060899  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.957031
+I0802 12:01:08.060910  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.259 (* 1 = 17.259 loss)
+I0802 12:01:08.060917  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1533 (* 1 = 17.1533 loss)
+I0802 12:01:08.060925  5938 solver.cpp:445] Iteration 2150, lr = 3.5937e-05
+I0802 12:01:27.292079  5938 solver.cpp:264] Iteration 2200, Testing net (#0)
+I0802 12:01:33.995134  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.993125
+I0802 12:01:33.995194  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:01:33.995203  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.999687
+I0802 12:01:33.995218  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.7814 (* 1 = 16.7814 loss)
+I0802 12:01:33.995223  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5544 (* 1 = 16.5544 loss)
+I0802 12:01:34.327147  5938 solver.cpp:209] Iteration 2200, loss = 34.3304
+I0802 12:01:34.327196  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.9375
+I0802 12:01:34.327204  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:01:34.327209  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.957031
+I0802 12:01:34.327225  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1692 (* 1 = 17.1692 loss)
+I0802 12:01:34.327232  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1613 (* 1 = 17.1613 loss)
+I0802 12:01:34.327239  5938 solver.cpp:445] Iteration 2200, lr = 3.5937e-05
+I0802 12:01:53.963769  5938 solver.cpp:209] Iteration 2250, loss = 34.6504
+I0802 12:01:53.963822  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.949219
+I0802 12:01:53.963829  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:01:53.963835  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.941406
+I0802 12:01:53.963851  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2442 (* 1 = 17.2442 loss)
+I0802 12:01:53.963857  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.4062 (* 1 = 17.4062 loss)
+I0802 12:01:53.963865  5938 solver.cpp:445] Iteration 2250, lr = 3.5937e-05
+I0802 12:02:13.578006  5938 solver.cpp:209] Iteration 2300, loss = 34.43
+I0802 12:02:13.578128  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.949219
+I0802 12:02:13.578145  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:02:13.578150  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.941406
+I0802 12:02:13.578167  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1666 (* 1 = 17.1666 loss)
+I0802 12:02:13.578174  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2635 (* 1 = 17.2635 loss)
+I0802 12:02:13.578181  5938 solver.cpp:445] Iteration 2300, lr = 3.5937e-05
+I0802 12:02:33.211284  5938 solver.cpp:209] Iteration 2350, loss = 34.3815
+I0802 12:02:33.211333  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.941406
+I0802 12:02:33.211339  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:02:33.211344  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.925781
+I0802 12:02:33.211352  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2094 (* 1 = 17.2094 loss)
+I0802 12:02:33.211359  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1721 (* 1 = 17.1721 loss)
+I0802 12:02:33.211365  5938 solver.cpp:445] Iteration 2350, lr = 3.5937e-05
+I0802 12:02:52.408403  5938 solver.cpp:264] Iteration 2400, Testing net (#0)
+I0802 12:02:59.115339  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.99625
+I0802 12:02:59.115401  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:02:59.115408  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.999687
+I0802 12:02:59.115427  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.7273 (* 1 = 16.7273 loss)
+I0802 12:02:59.115433  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5209 (* 1 = 16.5209 loss)
+I0802 12:02:59.447160  5938 solver.cpp:209] Iteration 2400, loss = 34.2607
+I0802 12:02:59.447211  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.964844
+I0802 12:02:59.447217  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:02:59.447223  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.972656
+I0802 12:02:59.447239  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1634 (* 1 = 17.1634 loss)
+I0802 12:02:59.447262  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.0973 (* 1 = 17.0973 loss)
+I0802 12:02:59.447269  5938 solver.cpp:445] Iteration 2400, lr = 1.18592e-05
+I0802 12:03:19.072741  5938 solver.cpp:209] Iteration 2450, loss = 34.7644
+I0802 12:03:19.072799  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.945312
+I0802 12:03:19.072808  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:03:19.072813  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.933594
+I0802 12:03:19.072821  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2876 (* 1 = 17.2876 loss)
+I0802 12:03:19.072829  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.4768 (* 1 = 17.4768 loss)
+I0802 12:03:19.072835  5938 solver.cpp:445] Iteration 2450, lr = 1.18592e-05
+I0802 12:03:38.681684  5938 solver.cpp:209] Iteration 2500, loss = 34.3104
+I0802 12:03:38.681908  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.960938
+I0802 12:03:38.681918  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:03:38.681923  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.960938
+I0802 12:03:38.681939  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1827 (* 1 = 17.1827 loss)
+I0802 12:03:38.681946  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1277 (* 1 = 17.1277 loss)
+I0802 12:03:38.681952  5938 solver.cpp:445] Iteration 2500, lr = 1.18592e-05
+I0802 12:03:58.298763  5938 solver.cpp:209] Iteration 2550, loss = 34.2276
+I0802 12:03:58.298815  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.976562
+I0802 12:03:58.298822  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:03:58.298827  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.949219
+I0802 12:03:58.298836  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1112 (* 1 = 17.1112 loss)
+I0802 12:03:58.298843  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1164 (* 1 = 17.1164 loss)
+I0802 12:03:58.298851  5938 solver.cpp:445] Iteration 2550, lr = 1.18592e-05
+I0802 12:04:17.540246  5938 solver.cpp:264] Iteration 2600, Testing net (#0)
+I0802 12:04:24.243904  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.996562
+I0802 12:04:24.243964  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:04:24.243971  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.999687
+I0802 12:04:24.243988  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.7277 (* 1 = 16.7277 loss)
+I0802 12:04:24.243994  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5355 (* 1 = 16.5355 loss)
+I0802 12:04:24.574393  5938 solver.cpp:209] Iteration 2600, loss = 34.4774
+I0802 12:04:24.574442  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.96875
+I0802 12:04:24.574450  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:04:24.574455  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 12:04:24.574463  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2712 (* 1 = 17.2712 loss)
+I0802 12:04:24.574470  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2062 (* 1 = 17.2062 loss)
+I0802 12:04:24.574477  5938 solver.cpp:445] Iteration 2600, lr = 1.18592e-05
+I0802 12:04:44.220075  5938 solver.cpp:209] Iteration 2650, loss = 34.4272
+I0802 12:04:44.220127  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.941406
+I0802 12:04:44.220135  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:04:44.220140  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.953125
+I0802 12:04:44.220149  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2439 (* 1 = 17.2439 loss)
+I0802 12:04:44.220156  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1833 (* 1 = 17.1833 loss)
+I0802 12:04:44.220178  5938 solver.cpp:445] Iteration 2650, lr = 1.18592e-05
+I0802 12:05:03.829526  5938 solver.cpp:209] Iteration 2700, loss = 34.3519
+I0802 12:05:03.829722  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.949219
+I0802 12:05:03.829732  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:05:03.829737  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.960938
+I0802 12:05:03.829754  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.2646 (* 1 = 17.2646 loss)
+I0802 12:05:03.829761  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.0872 (* 1 = 17.0872 loss)
+I0802 12:05:03.829768  5938 solver.cpp:445] Iteration 2700, lr = 1.18592e-05
+I0802 12:05:23.446135  5938 solver.cpp:209] Iteration 2750, loss = 34.2354
+I0802 12:05:23.446198  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.953125
+I0802 12:05:23.446214  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:05:23.446219  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.953125
+I0802 12:05:23.446236  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1224 (* 1 = 17.1224 loss)
+I0802 12:05:23.446243  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1129 (* 1 = 17.1129 loss)
+I0802 12:05:23.446249  5938 solver.cpp:445] Iteration 2750, lr = 1.18592e-05
+I0802 12:05:42.685039  5938 solver.cpp:264] Iteration 2800, Testing net (#0)
+I0802 12:05:49.390853  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.996094
+I0802 12:05:49.390914  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:05:49.390920  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.999687
+I0802 12:05:49.390938  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.7187 (* 1 = 16.7187 loss)
+I0802 12:05:49.390944  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5371 (* 1 = 16.5371 loss)
+I0802 12:05:49.722749  5938 solver.cpp:209] Iteration 2800, loss = 34.8227
+I0802 12:05:49.722796  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.953125
+I0802 12:05:49.722803  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:05:49.722810  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.929688
+I0802 12:05:49.722826  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.3124 (* 1 = 17.3124 loss)
+I0802 12:05:49.722832  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.5103 (* 1 = 17.5103 loss)
+I0802 12:05:49.722839  5938 solver.cpp:445] Iteration 2800, lr = 1.18592e-05
+I0802 12:06:09.357838  5938 solver.cpp:209] Iteration 2850, loss = 34.4011
+I0802 12:06:09.357879  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.9375
+I0802 12:06:09.357888  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:06:09.357893  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.964844
+I0802 12:06:09.357903  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.1652 (* 1 = 17.1652 loss)
+I0802 12:06:09.357910  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.2359 (* 1 = 17.2359 loss)
+I0802 12:06:09.357918  5938 solver.cpp:445] Iteration 2850, lr = 1.18592e-05
+I0802 12:06:28.988288  5938 solver.cpp:209] Iteration 2900, loss = 34.2304
+I0802 12:06:28.988407  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.964844
+I0802 12:06:28.988417  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:06:28.988422  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.957031
+I0802 12:06:28.988438  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.0932 (* 1 = 17.0932 loss)
+I0802 12:06:28.988445  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1373 (* 1 = 17.1373 loss)
+I0802 12:06:28.988461  5938 solver.cpp:445] Iteration 2900, lr = 1.18592e-05
+I0802 12:06:48.584339  5938 solver.cpp:209] Iteration 2950, loss = 34.1988
+I0802 12:06:48.584398  5938 solver.cpp:224]     Train net output #0: accuracy_azimuth = 0.972656
+I0802 12:06:48.584406  5938 solver.cpp:224]     Train net output #1: accuracy_class = 1
+I0802 12:06:48.584411  5938 solver.cpp:224]     Train net output #2: accuracy_elevation = 0.96875
+I0802 12:06:48.584429  5938 solver.cpp:224]     Train net output #3: loss_azimuth-new = 17.0915 (* 1 = 17.0915 loss)
+I0802 12:06:48.584435  5938 solver.cpp:224]     Train net output #4: loss_elevation-new = 17.1073 (* 1 = 17.1073 loss)
+I0802 12:06:48.584442  5938 solver.cpp:445] Iteration 2950, lr = 1.18592e-05
+I0802 12:07:08.054913  5938 solver.cpp:334] Snapshotting to snapshots_iter_3000.caffemodel
+I0802 12:07:10.181401  5938 solver.cpp:342] Snapshotting solver state to snapshots_iter_3000.solverstate
+I0802 12:07:11.990973  5938 solver.cpp:246] Iteration 3000, loss = 34.1703
+I0802 12:07:11.991029  5938 solver.cpp:264] Iteration 3000, Testing net (#0)
+I0802 12:07:18.600049  5938 solver.cpp:315]     Test net output #0: accuracy_azimuth = 0.996406
+I0802 12:07:18.600098  5938 solver.cpp:315]     Test net output #1: accuracy_class = 1
+I0802 12:07:18.600106  5938 solver.cpp:315]     Test net output #2: accuracy_elevation = 0.999687
+I0802 12:07:18.600116  5938 solver.cpp:315]     Test net output #3: loss_azimuth-new = 16.714 (* 1 = 16.714 loss)
+I0802 12:07:18.600121  5938 solver.cpp:315]     Test net output #4: loss_elevation-new = 16.5396 (* 1 = 16.5396 loss)
+I0802 12:07:18.600127  5938 solver.cpp:251] Optimization Done.
+I0802 12:07:18.600131  5938 caffe.cpp:121] Optimization Done.
