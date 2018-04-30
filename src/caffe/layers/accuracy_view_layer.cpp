@@ -70,10 +70,10 @@ void AccuracyViewLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
         max_prob = prob;
       }
     }
-    if (period == 180)  //elevation
+    /*if (period == 180)  //elevation
         printf("1 %d %d %d\n", i, label_value, pred_angle);
     else if (period == 360) //azimuth
-        printf("0 %d %d %d\n", i, label_value, pred_angle);
+        printf("0 %d %d %d\n", i, label_value, pred_angle);*/
     Dtype error = std::min(abs(pred_angle - label_angle), int(period)-abs(pred_angle - label_angle));
     if (error <= tol_angle_) {
       ++accuracy;
