@@ -166,12 +166,12 @@ int test() {
         }
         const std::string& output_name = caffe_net.blob_names()[
             caffe_net.output_blob_indices()[j]];
-        LOG(INFO) << "Batch " << i << ", " << output_name << " = " << score;
+        //LOG(INFO) << "Batch " << i << ", " << output_name << " = " << score;
       }
     }
   }
   loss /= FLAGS_iterations;
-  LOG(INFO) << "Loss: " << loss;
+  //LOG(INFO) << "Loss: " << loss;
   for (int i = 0; i < test_score.size(); ++i) {
     const std::string& output_name = caffe_net.blob_names()[
         caffe_net.output_blob_indices()[test_score_output_id[i]]];
@@ -183,7 +183,7 @@ int test() {
       loss_msg_stream << " (* " << loss_weight
                       << " = " << loss_weight * mean_score << " loss)";
     }
-    LOG(INFO) << output_name << " = " << mean_score << loss_msg_stream.str();
+    //LOG(INFO) << output_name << " = " << mean_score << loss_msg_stream.str();
   }
 
   return 0;
